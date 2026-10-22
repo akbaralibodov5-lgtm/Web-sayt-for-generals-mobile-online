@@ -216,10 +216,10 @@ h1{font-size:clamp(66px,18vw,98px)}
 <canvas id="waru3d-canvas" aria-label="Interactive real-time 3D military vehicle viewer"></canvas>
 <div class="waru3d-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="waru3d-bottomline"><span id="waru3d-modelname">M1A2 ABRAMS</span><span>DRAG TO ROTATE · SCROLL TO ZOOM</span></div>
-<div class="waru3d-controls"><button id="waru3d-reset" type="button" aria-label="Reset camera">⟳ RESET VIEW</button><button id="waru3d-spin" type="button" aria-pressed="true">◉ AUTO ROTATE</button></div>
+<div class="waru3d-controls"><button id="waru3d-reset" type="button" aria-label="Reset camera">⟳ RESET VIEW</button><button id="waru3d-spin" type="button" aria-pressed="true">◉ AUTO ROTATE</button><button id="waru3d-load" type="button">＋ LOAD W3D</button><input id="waru3d-file" type="file" accept=".w3d,.W3D,application/octet-stream" hidden></div>
 </div>
 <aside class="waru3d-side"><div class="waru3d-sidehead"><span>ASSET SELECTOR</span><small>12 MODELS</small></div><div class="waru3d-units" id="waru3d-units">
-<button class="waru3d-unit is-active" type="button" data-unit="0" aria-pressed="true"><span class="waru3d-unitno">01</span><span class="waru3d-unittext"><b>CRUSADER TANK</b><small>USA / MAIN BATTLE TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="1" aria-pressed="false"><span class="waru3d-unitno">02</span><span class="waru3d-unittext"><b>PALADIN TANK</b><small>USA / LASER DEFENSE</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="2" aria-pressed="false"><span class="waru3d-unitno">03</span><span class="waru3d-unittext"><b>HUMVEE</b><small>USA / LIGHT RECON</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="3" aria-pressed="false"><span class="waru3d-unitno">04</span><span class="waru3d-unittext"><b>COMANCHE</b><small>USA / ATTACK HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="4" aria-pressed="false"><span class="waru3d-unitno">05</span><span class="waru3d-unittext"><b>RAPTOR</b><small>USA / AIR SUPERIORITY</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="5" aria-pressed="false"><span class="waru3d-unitno">06</span><span class="waru3d-unittext"><b>CHINOOK</b><small>USA / TRANSPORT HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="6" aria-pressed="false"><span class="waru3d-unitno">07</span><span class="waru3d-unittext"><b>OVERLORD TANK</b><small>CHINA / HEAVY ARMOR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="7" aria-pressed="false"><span class="waru3d-unitno">08</span><span class="waru3d-unittext"><b>GATTLING TANK</b><small>CHINA / ANTI-AIR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="8" aria-pressed="false"><span class="waru3d-unitno">09</span><span class="waru3d-unittext"><b>DRAGON TANK</b><small>CHINA / FLAME TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="9" aria-pressed="false"><span class="waru3d-unitno">10</span><span class="waru3d-unittext"><b>MIG FIGHTER</b><small>CHINA / STRIKE AIRCRAFT</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="10" aria-pressed="false"><span class="waru3d-unitno">11</span><span class="waru3d-unittext"><b>TECHNICAL</b><small>GLA / FAST ATTACK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="11" aria-pressed="false"><span class="waru3d-unitno">12</span><span class="waru3d-unittext"><b>SCUD LAUNCHER</b><small>GLA / ROCKET ARTILLERY</small></span><span class="waru3d-unitarrow">↗</span></button></div><div class="waru3d-sidefoot"><span class="waru3d-live"></span> INTERACTIVE 3D ASSET DATABASE</div></aside>
+<button class="waru3d-unit is-active" type="button" data-unit="0" aria-pressed="true"><span class="waru3d-unitno">01</span><span class="waru3d-unittext"><b>CRUSADER TANK</b><small>USA / MAIN BATTLE TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="1" aria-pressed="false"><span class="waru3d-unitno">02</span><span class="waru3d-unittext"><b>PALADIN TANK</b><small>USA / LASER DEFENSE</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="2" aria-pressed="false"><span class="waru3d-unitno">03</span><span class="waru3d-unittext"><b>HUMVEE</b><small>USA / LIGHT RECON</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="3" aria-pressed="false"><span class="waru3d-unitno">04</span><span class="waru3d-unittext"><b>COMANCHE</b><small>USA / ATTACK HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="4" aria-pressed="false"><span class="waru3d-unitno">05</span><span class="waru3d-unittext"><b>RAPTOR</b><small>USA / AIR SUPERIORITY</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="5" aria-pressed="false"><span class="waru3d-unitno">06</span><span class="waru3d-unittext"><b>CHINOOK</b><small>USA / TRANSPORT HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="6" aria-pressed="false"><span class="waru3d-unitno">07</span><span class="waru3d-unittext"><b>OVERLORD TANK</b><small>CHINA / HEAVY ARMOR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="7" aria-pressed="false"><span class="waru3d-unitno">08</span><span class="waru3d-unittext"><b>GATTLING TANK</b><small>CHINA / ANTI-AIR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="8" aria-pressed="false"><span class="waru3d-unitno">09</span><span class="waru3d-unittext"><b>DRAGON TANK</b><small>CHINA / FLAME TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="9" aria-pressed="false"><span class="waru3d-unitno">10</span><span class="waru3d-unittext"><b>MIG FIGHTER</b><small>CHINA / STRIKE AIRCRAFT</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="10" aria-pressed="false"><span class="waru3d-unitno">11</span><span class="waru3d-unittext"><b>TECHNICAL</b><small>GLA / FAST ATTACK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="11" aria-pressed="false"><span class="waru3d-unitno">12</span><span class="waru3d-unittext"><b>SCUD LAUNCHER</b><small>GLA / ROCKET ARTILLERY</small></span><span class="waru3d-unitarrow">↗</span></button></div><div class="waru3d-sidefoot"><span class="waru3d-live"></span> INTERACTIVE 3D ASSET DATABASE<br><small id="waru3d-import-status" style="display:block;margin-top:8px;line-height:1.6;letter-spacing:.04em;color:#9bb8c7">LOCAL W3D IMPORT: select a .W3D file from your device. Files stay in your browser.</small></div></aside>
 </div>
 <div class="waru3d-specs"><div><small>RENDER MODE</small><b>REAL-TIME WEBGL</b></div><div><small>SURFACE DETAIL</small><b>PBR-STYLE METALS</b></div><div><small>VIEW CONTROL</small><b>ROTATE · ZOOM · RESET</b></div><div><small>ANIMATION</small><b>LIVE MECHANICAL MOTION</b></div></div>
 </div></section><section id="features"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Nega Waru Edition?</div><h2>STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.</h2></div><p>O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.</p></div><div class="features">
@@ -274,6 +274,66 @@ function makeHumvee(){const g=makeTruck(0);g.scale.set(.82,.84,.84);box(g,-.65,1
 function makeTechnical(){const g=makeTruck(1);g.scale.set(.9,.86,.9);box(g,.35,1.16,0,.92,.1,.92,armorDark);const gun=group();g.add(gun);gun.position.set(.28,1.2,0);cyl(gun,0,.05,0,.1,.1,.16,steel,'y',12);for(let i=0;i<3;i++)cyl(gun,.4,.1,(i-1)*.12,.045,.045,.8,steel,'x',10);for(let s of [-1,1])box(g,.25,.82,s*.53,.3,.18,.07,steelDark);return g}
 function makeScud(){const g=makeTruck(1);box(g,.12,.95,0,1.18,.18,1.02,armorDark);const rack=group();g.add(rack);rack.position.set(.22,1.18,0);rack.rotation.z=-.34;for(let i=0;i<3;i++){const z=(i-1)*.28;cyl(rack,.16,.18,z,.105,.105,1.65,missile,'x',16);cyl(rack,.98,.18,z,.12,.12,.12,steelDark,'x',12)}line(g,[-.65,.82,-.5],[.65,1.65,-.5],.035,steelDark);line(g,[-.65,.82,.5],[.65,1.65,.5],.035,steelDark);return g}
 function makeUnit(index){switch(index){case 0:return makeTank(0);case 1:return makePaladin();case 2:return makeHumvee();case 3:return makeHeli(0);case 4:return makeJet(0);case 5:return makeChinook();case 6:return makeOverlord();case 7:return makeGattling();case 8:return makeDragon();case 9:return makeJet(1);case 10:return makeTechnical();default:return makeScud()}}
+function readW3DChunks(view,start,end,depth=0){
+ if(depth>24)throw new Error('W3D chunk nesting is too deep');
+ const chunks=[];let p=start;
+ while(p+8<=end){
+  const id=view.getUint32(p,true),raw=view.getUint32(p+4,true),hasChildren=(raw&0x80000000)!==0,size=raw&0x7fffffff;
+  const dataStart=p+8,dataEnd=dataStart+size;
+  if(size<0||dataEnd>end||dataEnd<p)throw new Error('Invalid W3D chunk size near byte '+p);
+  const item={id,size,hasChildren,start:p,dataStart,end:dataEnd,children:[]};
+  if(hasChildren)item.children=readW3DChunks(view,dataStart,dataEnd,depth+1);
+  chunks.push(item);p=dataEnd;
+ }
+ return chunks;
+}
+function collectW3DMeshes(chunks,out=[]){
+ for(const ch of chunks){
+  if(ch.id===0&&ch.hasChildren){
+   const verts=ch.children.find(x=>x.id===2&&!x.hasChildren);
+   const tris=ch.children.find(x=>x.id===0x20&&!x.hasChildren);
+   if(verts&&tris&&verts.size>=36&&tris.size>=32){
+    const count=Math.floor(verts.size/12),vertexData=new Float32Array(count*3);
+    for(let i=0;i<count;i++){const p=verts.dataStart+i*12;vertexData[i*3]=0;vertexData[i*3+1]=0;vertexData[i*3+2]=0;
+     vertexData[i*3]=currentW3DView.getFloat32(p,true);vertexData[i*3+1]=currentW3DView.getFloat32(p+4,true);vertexData[i*3+2]=currentW3DView.getFloat32(p+8,true);}
+    const indexCount=Math.floor(tris.size/32)*3,indices=[];
+    for(let i=0;i<Math.floor(tris.size/32);i++){const p=tris.dataStart+i*32,a=currentW3DView.getUint32(p,true),b=currentW3DView.getUint32(p+4,true),d=currentW3DView.getUint32(p+8,true);if(a<count&&b<count&&d<count){indices.push(a,d,b)}}
+    if(indices.length>=3)out.push({positions:vertexData,indices,name:'W3D mesh '+(out.length+1)});
+   }
+  }
+  if(ch.children.length)collectW3DMeshes(ch.children,out);
+ }
+ return out;
+}
+let currentW3DView=null,importedW3D=false;
+async function loadW3DFile(file){
+ const status=document.getElementById('waru3d-import-status');
+ if(!file)return;
+ if(file.size>80*1024*1024){status.textContent='Fayl juda katta (80 MB dan oshmasin).';return}
+ try{
+  status.textContent='W3D CHUNKS O‘QILMOQDA…';
+  const buffer=await file.arrayBuffer();currentW3DView=new DataView(buffer);
+  const chunks=readW3DChunks(currentW3DView,0,buffer.byteLength);
+  const meshes=collectW3DMeshes(chunks);
+  if(!meshes.length)throw new Error('Ushbu faylda to‘g‘ridan-to‘g‘ri render qilinadigan statik mesh topilmadi. Bu HLOD, skeleton yoki animatsiya fayli bo‘lishi mumkin.');
+  const root=group(),material=new THREE.MeshStandardMaterial({color:0x9aa58c,roughness:.72,metalness:.28,side:THREE.DoubleSide});
+  let faceCount=0;
+  for(const part of meshes){
+   const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(part.positions,3));geo.setIndex(part.indices);geo.computeVertexNormals();
+   const obj=new THREE.Mesh(geo,material);obj.castShadow=true;obj.receiveShadow=true;root.add(obj);faceCount+=part.indices.length/3;
+  }
+  const bounds=new THREE.Box3().setFromObject(root),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+  if(!Number.isFinite(size.x+size.y+size.z)||Math.max(size.x,size.y,size.z)<=0)throw new Error('Model geometriyasi bo‘sh yoki noto‘g‘ri.');
+  root.position.sub(center);root.scale.setScalar(3.2/Math.max(size.x,size.y,size.z));
+  scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose()});model=root;scene.add(model);importedW3D=true;
+  rotX=-.13;rotY=-.55;zoom=1;camera.position.set(5.5,3.2,7.2);camera.lookAt(0,0,0);
+  document.getElementById('waru3d-counter').textContent='LOCAL W3D / '+meshes.length+' MESH'+(meshes.length===1?'':'ES');
+  document.getElementById('waru3d-modelname').textContent=file.name.toUpperCase();
+  document.querySelectorAll('.waru3d-unit').forEach(b=>{b.classList.remove('is-active');b.setAttribute('aria-pressed','false')});
+  status.textContent='YUKLANDI: '+meshes.length+' mesh, '+faceCount.toLocaleString()+' uchburchak. Asosiy geometriya ko‘rsatilmoqda; W3D tekstura, rig va animatsiyalar hozircha qo‘llanmaydi.';
+ }catch(err){console.error('W3D import failed',err);status.textContent='IMPORT XATOSI: '+err.message}
+}
+
 const names=['CRUSADER TANK','PALADIN TANK','HUMVEE','COMANCHE','RAPTOR','CHINOOK','OVERLORD TANK','GATTLING TANK','DRAGON TANK','MIG FIGHTER','TECHNICAL','SCUD LAUNCHER'];
 try{
 renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
@@ -292,6 +352,8 @@ function fit(){if(!renderer||!camera)return;const w=stage.clientWidth,h=stage.cl
 new ResizeObserver(fit).observe(stage);
 function select(i){active=i;const next=makeUnit(i);scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose()});model=next;scene.add(model);rotY=-.55;rotX=-.13;zoom=1;model.rotation.set(rotX,rotY,0);camera.position.set(5.5/zoom,3.2/zoom,7.2/zoom);camera.lookAt(0,.4,0);document.getElementById('waru3d-counter').textContent='ASSET '+String(i+1).padStart(2,'0')+' / 12';document.getElementById('waru3d-modelname').textContent=names[i];document.querySelectorAll('.waru3d-unit').forEach((b,j)=>{b.classList.toggle('is-active',j===i);b.setAttribute('aria-pressed',j===i?'true':'false')})}
 document.getElementById('waru3d-units').addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b)select(Number(b.dataset.unit))});
+document.getElementById('waru3d-load').addEventListener('click',()=>document.getElementById('waru3d-file').click());
+document.getElementById('waru3d-file').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)loadW3DFile(f);e.target.value=''});
 document.getElementById('waru3d-reset').addEventListener('click',()=>{rotX=-.13;rotY=-.55;zoom=1;camera.position.set(5.5,3.2,7.2);camera.lookAt(0,.4,0)});
 document.getElementById('waru3d-spin').addEventListener('click',e=>{autoRotate=!autoRotate;e.currentTarget.setAttribute('aria-pressed',String(autoRotate));e.currentTarget.textContent=autoRotate?'◉ AUTO ROTATE':'○ AUTO ROTATE'});
 canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing'});
