@@ -138,6 +138,47 @@ h1{font-size:clamp(66px,18vw,98px)}
 @media(max-width:480px){.arsenal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.arsenal-card{padding:10px 9px 12px;min-height:188px}.arsenal-visual{height:100px}.arsenal-visual svg{height:94px}.arsenal-label{font-size:12px;letter-spacing:.04em;align-items:flex-start;flex-direction:column;gap:4px}.unit-subtitle{font-size:8px}.unit-index{right:9px;bottom:8px;font-size:7px}.unit-footnote{font-size:7px;gap:6px;letter-spacing:.08em;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.arsenal-card,.arsenal-card svg,.status-dot{animation:none!important;transition:none!important}}
 
+
+/* WARU EDITION: interactive real-time 3D vehicle lab */
+.waru-3d-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 38% 35%,#1a3445 0,#0a141e 45%,#060a10 100%);padding:clamp(48px,7vw,92px) 0}
+.waru-3d-section:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(#8bd4ff09 1px,transparent 1px),linear-gradient(90deg,#8bd4ff09 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(#000,transparent 85%)}
+.waru-3d-section .wrap{position:relative;z-index:1}
+.waru-3d-section .arsenal-heading{margin-bottom:24px}
+.waru-3d-section .arsenal-heading h2{letter-spacing:-.035em}
+.waru3d-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(245px,.8fr);gap:14px;align-items:stretch}
+.waru3d-stage{position:relative;min-height:510px;overflow:hidden;border:1px solid #8cc8e43b;border-radius:8px;background:radial-gradient(ellipse at 50% 42%,#294456 0,#132532 42%,#08121b 80%);box-shadow:0 22px 70px #0007,inset 0 1px #d9f4ff12}
+.waru3d-stage:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,#7bcaff09,transparent 42%,#a1eaff05);z-index:1}
+#waru3d-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:pan-y}
+.waru3d-topline,.waru3d-bottomline{position:absolute;left:17px;right:17px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;font:10px/1.4 'Barlow Condensed',sans-serif;letter-spacing:.16em;color:#a7c0ce;pointer-events:none}
+.waru3d-topline{top:16px}.waru3d-bottomline{bottom:57px;color:#c6dce5}.waru3d-bottomline span:first-child{font-size:13px;font-weight:700;letter-spacing:.13em;color:#f0f7fa}
+.waru3d-live{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:#82f4b7;box-shadow:0 0 10px #82f4b7;animation:statusPulse 1.7s infinite}
+.waru3d-loading{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:#0a141e;color:#b6d3e0;font:10px 'Barlow Condensed',sans-serif;letter-spacing:.15em;transition:opacity .4s}
+.waru3d-loading.is-hidden{opacity:0;pointer-events:none}.waru3d-loading small{font:11px system-ui,sans-serif;letter-spacing:0;color:#7d9baa}
+.waru3d-spinner{width:32px;height:32px;border:2px solid #477086;border-top-color:#8be0ff;border-radius:50%;animation:waru3dSpin .8s linear infinite}@keyframes waru3dSpin{to{transform:rotate(360deg)}}
+.waru3d-reticle{position:absolute;inset:50% auto auto 50%;width:82%;height:68%;transform:translate(-50%,-50%);pointer-events:none;opacity:.3;z-index:2}
+.waru3d-reticle i{position:absolute;width:19px;height:19px;border-color:#a9e3ff;border-style:solid}
+.waru3d-reticle i:nth-child(1){top:0;left:0;border-width:1px 0 0 1px}.waru3d-reticle i:nth-child(2){top:0;right:0;border-width:1px 1px 0 0}.waru3d-reticle i:nth-child(3){bottom:0;left:0;border-width:0 0 1px 1px}.waru3d-reticle i:nth-child(4){bottom:0;right:0;border-width:0 1px 1px 0}
+.waru3d-controls{position:absolute;z-index:4;bottom:14px;left:15px;display:flex;gap:7px}
+.waru3d-controls button{padding:8px 10px;border:1px solid #9bc7dc44;background:#07131dbd;color:#bdd5e0;border-radius:3px;font:10px 'Barlow Condensed',sans-serif;letter-spacing:.1em;cursor:pointer}
+.waru3d-controls button:hover,.waru3d-controls button[aria-pressed=true]{border-color:#7cd6ff;color:#fff;background:#1a4055c9}
+.waru3d-side{display:flex;flex-direction:column;min-height:510px;border:1px solid #8cc8e42b;border-radius:8px;background:#09131ce8;overflow:hidden}
+.waru3d-sidehead{display:flex;justify-content:space-between;align-items:center;padding:17px 14px;border-bottom:1px solid #a6d9ed20;color:#e2f0f5;font:11px 'Barlow Condensed',sans-serif;letter-spacing:.15em}
+.waru3d-sidehead small{font-size:9px;color:#7f9baa}
+.waru3d-units{overflow:auto;max-height:430px;scrollbar-width:thin;scrollbar-color:#35566a #0b1720}
+.waru3d-unit{display:flex;align-items:center;gap:11px;width:100%;min-height:55px;padding:9px 12px;text-align:left;background:transparent;border:0;border-bottom:1px solid #8cb5c514;color:#8ba5b2;cursor:pointer;transition:background .2s,color .2s}
+.waru3d-unit:hover{background:#15304480;color:#dff4fc}.waru3d-unit.is-active{background:linear-gradient(90deg,#1d4960b8,#11273566);color:#fff;box-shadow:inset 2px 0 #7edaff}
+.waru3d-unitno{font:12px 'Barlow Condensed',sans-serif;color:#5e7d8e;min-width:20px}.waru3d-unit.is-active .waru3d-unitno{color:#8be0ff}
+.waru3d-unittext{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}.waru3d-unittext b{font:600 11px 'Barlow Condensed',sans-serif;letter-spacing:.08em}.waru3d-unittext small{font:9px 'Barlow Condensed',sans-serif;letter-spacing:.1em;color:#678797}
+.waru3d-unitarrow{opacity:0;color:#8be0ff}.waru3d-unit.is-active .waru3d-unitarrow,.waru3d-unit:hover .waru3d-unitarrow{opacity:1}
+.waru3d-sidefoot{margin-top:auto;padding:13px;border-top:1px solid #a6d9ed20;color:#7693a2;font:9px 'Barlow Condensed',sans-serif;letter-spacing:.12em}
+.waru3d-specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.waru3d-specs>div{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid #8cc8e421;background:#0b1721a8}
+.waru3d-specs small{font:9px 'Barlow Condensed',sans-serif;letter-spacing:.13em;color:#698999}
+.waru3d-specs b{font:600 11px 'Barlow Condensed',sans-serif;letter-spacing:.07em;color:#d8e8ee}
+@media(max-width:820px){.waru3d-layout{grid-template-columns:1fr}.waru3d-stage{min-height:430px}.waru3d-side{min-height:0}.waru3d-units{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:unset}.waru3d-unit:nth-child(odd){border-right:1px solid #8cb5c514}.waru3d-sidefoot{margin-top:0}.waru3d-specs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.waru3d-stage{min-height:350px}.waru3d-topline,.waru3d-bottomline{left:11px;right:11px;font-size:8px;letter-spacing:.09em}.waru3d-bottomline{bottom:54px}.waru3d-bottomline span:first-child{font-size:11px}.waru3d-controls{left:10px;bottom:10px}.waru3d-controls button{font-size:9px;padding:7px}.waru3d-unit{min-height:52px;padding:8px 9px;gap:7px}.waru3d-unittext b{font-size:10px}.waru3d-unittext small{font-size:8px}.waru3d-specs>div{padding:10px}.waru3d-specs b{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.waru3d-live,.waru3d-spinner{animation:none}}
+
 </style>
 </head>
 <body>
@@ -165,377 +206,23 @@ h1{font-size:clamp(66px,18vw,98px)}
 <div class="ops-cell"><span class="ops-number">02</span><span><small>Platforma</small><strong>Android / Mobile</strong></span></div>
 <div class="ops-cell"><span class="ops-number">03</span><span><small>Missiya</small><strong>Waru Edition community</strong></span></div>
 </div></section>
-<section class="arsenal-section" id="arsenal"><div class="wrap">
-<div class="arsenal-heading reveal"><div><div class="eyebrow">TACTICAL ASSET LIBRARY / 01–12</div><h2>METALL. ZIRH.<br><span>JANG MAYDONI.</span></h2></div><p>Generals ruhidan ilhomlangan, metall qatlamlari, zirh panellari, shisha kabinalar, shassi detallari va jonli harakatlar bilan qayta ishlangan bo‘linmalar galereyasi.</p></div>
-<div class="arsenal-grid"><article class="arsenal-card reveal" style="--unit-accent:#b9d7a1"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u1metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u1armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u1glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u1wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u1glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u1shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u1shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u1armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u1armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u1metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u1metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>M1A2 ABRAMS</span><small>GROUND</small></div><div class="unit-subtitle">MAIN BATTLE TANK</div><div class="unit-index">UNIT // 01</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#77cfff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed modern fighter aircraft illustration"><defs>
-<linearGradient id="u2metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u2armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u2glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u2wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u2glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u2shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="118" cy="95" rx="82" ry="8" fill="#000" opacity=".4"/><ellipse cx="115" cy="94" rx="85" ry="13" fill="url(#u2glow)" opacity=".28"/>
-<g filter="url(#u2shadow)" stroke="#c2d0d4" stroke-width="1.1" stroke-linejoin="round">
-<path d="M13 64 74 52 104 13 119 10 128 50 183 60 224 70 181 76 129 78 118 108 105 106 92 78 49 75Z" fill="url(#u2wing)"/>
-<path d="M24 65 85 58 105 21 113 20 119 56 179 66 209 70 178 72 122 71 113 98 108 98 98 72 51 71Z" fill="#7b909b" opacity=".55"/>
-<path d="M84 54 105 16 113 17 117 56 98 65Z" fill="#d1dde0" opacity=".4"/>
-<path d="M101 53 112 31 121 53 137 62 122 70 99 66Z" fill="url(#u2metal)"/>
-<path d="M106 48 112 24 117 48Z" fill="url(#u2glass)" stroke="#c7f1ff"/>
-<path d="M110 24 112 17 115 25Z" fill="#d5f5ff"/>
-<path d="M96 63 73 69 47 70 52 73 96 73Z" fill="#243b4b"/>
-<path d="M132 63 160 68 192 70 184 73 132 73Z" fill="#243b4b"/>
-<path d="M107 76 103 94 109 101 115 78Z" fill="#d3dfe1"/>
-<path d="M121 77 127 96 121 101 116 78Z" fill="#536c7a"/>
-<path d="M16 64 47 67 54 71 21 69Z" fill="#c4d4d9"/>
-<path d="M180 68 219 70 187 74Z" fill="#d2dfe3"/>
-<path d="M75 52 106 29 110 52 94 64Z" fill="#344d60"/><path d="M132 56 165 68 131 68Z" fill="#344d60"/><path d="M56 72 77 74 67 78Z" fill="#ffb06d"/>
-<path d="M110 18 113 13 116 19" fill="none" stroke="#fff" opacity=".8"/>
-</g>
-<path d="M18 70H58" stroke="#ff9862" stroke-width="2" opacity=".7"/><path d="M177 78H218" stroke="#62cfff" stroke-width="1.5" opacity=".8"/>
-</svg></div><div class="arsenal-label"><span>F-22 RAPTOR</span><small>AIR</small></div><div class="unit-subtitle">AIR SUPERIORITY</div><div class="unit-index">UNIT // 02</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#91eadb"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed military helicopter illustration"><defs>
-<linearGradient id="u3metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u3armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u3glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u3wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u3glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u3shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="115" cy="99" rx="80" ry="8" fill="#000" opacity=".5"/>
-<g filter="url(#u3shadow)" stroke="#c0d1d6" stroke-width="1.3" stroke-linejoin="round">
-<path d="M33 62 51 46 91 39 137 44 158 57 148 71 91 78 49 71Z" fill="url(#u3armor)"/>
-<path d="M49 47 63 34 91 33 111 43 104 57 57 59Z" fill="url(#u3glass)"/>
-<path d="M65 36 88 35 103 44 97 52 62 52Z" fill="#9cd9e8" opacity=".55"/>
-<path d="M104 43 139 48 154 57 146 63 105 59Z" fill="#526b75"/>
-<path d="M137 49 196 38 201 42 159 62 150 69 143 65Z" fill="url(#u3metal)"/>
-<path d="M190 39 210 32 215 36 200 43Z" fill="#9aafb6"/>
-<path d="M204 35 211 23 216 24 214 37Z" fill="#9aafb6"/>
-<path d="M52 70 46 86 52 89 64 72M124 73 130 86 137 85 136 69" fill="none" stroke="#bacbd0" stroke-width="4"/>
-<path d="M79 76 73 89 64 89M122 76 126 89 137 89" fill="none" stroke="#708b96" stroke-width="2"/>
-<path d="M81 42 87 41 94 49 90 51Z" fill="#e0f5fa"/>
-<path d="M113 48 123 52 122 60 112 57Z" fill="#c7d9de"/>
-<path d="M72 60H105" stroke="#b7c6c8" stroke-dasharray="3 3"/>
-</g>
-<g class="unit-rotor" transform-origin="112px 32px"><path d="M17 30H207" stroke="#d9e7eb" stroke-width="3" stroke-linecap="round"/><path d="M64 30H156" stroke="#607b86" stroke-width="6" stroke-linecap="round" opacity=".65"/></g>
-<circle cx="112" cy="32" r="5" fill="#c2d4da" stroke="#edf9fc" stroke-width="1.5"/>
-<g class="unit-prop" transform-origin="211px 31px"><path d="M211 14V48M195 31H227" stroke="#d9e7eb" stroke-width="2.5" stroke-linecap="round"/></g>
-<path d="M50 92 27 99 61 97" fill="none" stroke="#7ad7ff" stroke-width="1.2" opacity=".65"/>
-
-</svg></div><div class="arsenal-label"><span>AH-64 APACHE</span><small>AIR</small></div><div class="unit-subtitle">ATTACK HELICOPTER</div><div class="unit-index">UNIT // 03</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#d0a8ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u4metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u4armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u4glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u4wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u4glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u4shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u4shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u4armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u4armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u4metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u4metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>MLRS LAUNCHER</span><small>SUPPORT</small></div><div class="unit-subtitle">ROCKET ARTILLERY</div><div class="unit-index">UNIT // 04</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u5metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u5armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u5glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u5wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u5glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u5shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u5shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u5armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u5armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u5metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u5metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>ARMORED CARRIER</span><small>GROUND</small></div><div class="unit-subtitle">MECHANIZED INFANTRY</div><div class="unit-index">UNIT // 05</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#70baff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed modern fighter aircraft illustration"><defs>
-<linearGradient id="u6metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u6armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u6glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u6wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u6glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u6shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="118" cy="95" rx="82" ry="8" fill="#000" opacity=".4"/><ellipse cx="115" cy="94" rx="85" ry="13" fill="url(#u6glow)" opacity=".28"/>
-<g filter="url(#u6shadow)" stroke="#c2d0d4" stroke-width="1.1" stroke-linejoin="round">
-<path d="M13 64 74 52 104 13 119 10 128 50 183 60 224 70 181 76 129 78 118 108 105 106 92 78 49 75Z" fill="url(#u6wing)"/>
-<path d="M24 65 85 58 105 21 113 20 119 56 179 66 209 70 178 72 122 71 113 98 108 98 98 72 51 71Z" fill="#7b909b" opacity=".55"/>
-<path d="M84 54 105 16 113 17 117 56 98 65Z" fill="#d1dde0" opacity=".4"/>
-<path d="M101 53 112 31 121 53 137 62 122 70 99 66Z" fill="url(#u6metal)"/>
-<path d="M106 48 112 24 117 48Z" fill="url(#u6glass)" stroke="#c7f1ff"/>
-<path d="M110 24 112 17 115 25Z" fill="#d5f5ff"/>
-<path d="M96 63 73 69 47 70 52 73 96 73Z" fill="#243b4b"/>
-<path d="M132 63 160 68 192 70 184 73 132 73Z" fill="#243b4b"/>
-<path d="M107 76 103 94 109 101 115 78Z" fill="#d3dfe1"/>
-<path d="M121 77 127 96 121 101 116 78Z" fill="#536c7a"/>
-<path d="M16 64 47 67 54 71 21 69Z" fill="#c4d4d9"/>
-<path d="M180 68 219 70 187 74Z" fill="#d2dfe3"/>
-<path d="M75 52 106 29 110 52 94 64Z" fill="#344d60"/><path d="M132 56 165 68 131 68Z" fill="#344d60"/><path d="M56 72 77 74 67 78Z" fill="#ffb06d"/>
-<path d="M110 18 113 13 116 19" fill="none" stroke="#fff" opacity=".8"/>
-</g>
-<path d="M18 70H58" stroke="#ff9862" stroke-width="2" opacity=".7"/><path d="M177 78H218" stroke="#62cfff" stroke-width="1.5" opacity=".8"/>
-</svg></div><div class="arsenal-label"><span>STEALTH FIGHTER</span><small>AIR</small></div><div class="unit-subtitle">LOW-OBSERVABLE AIRCRAFT</div><div class="unit-index">UNIT // 06</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#ffb27c"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u7metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u7armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u7glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u7wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u7glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u7shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u7shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u7armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u7armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u7metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u7metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>SELF-PROPELLED GUN</span><small>GROUND</small></div><div class="unit-subtitle">LONG-RANGE FIRE</div><div class="unit-index">UNIT // 07</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#89d8ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed military helicopter illustration"><defs>
-<linearGradient id="u8metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u8armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u8glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u8wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u8glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u8shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="115" cy="99" rx="80" ry="8" fill="#000" opacity=".5"/>
-<g filter="url(#u8shadow)" stroke="#c0d1d6" stroke-width="1.3" stroke-linejoin="round">
-<path d="M33 62 51 46 91 39 137 44 158 57 148 71 91 78 49 71Z" fill="url(#u8armor)"/>
-<path d="M49 47 63 34 91 33 111 43 104 57 57 59Z" fill="url(#u8glass)"/>
-<path d="M65 36 88 35 103 44 97 52 62 52Z" fill="#9cd9e8" opacity=".55"/>
-<path d="M104 43 139 48 154 57 146 63 105 59Z" fill="#526b75"/>
-<path d="M137 49 196 38 201 42 159 62 150 69 143 65Z" fill="url(#u8metal)"/>
-<path d="M190 39 210 32 215 36 200 43Z" fill="#9aafb6"/>
-<path d="M204 35 211 23 216 24 214 37Z" fill="#9aafb6"/>
-<path d="M52 70 46 86 52 89 64 72M124 73 130 86 137 85 136 69" fill="none" stroke="#bacbd0" stroke-width="4"/>
-<path d="M79 76 73 89 64 89M122 76 126 89 137 89" fill="none" stroke="#708b96" stroke-width="2"/>
-<path d="M81 42 87 41 94 49 90 51Z" fill="#e0f5fa"/>
-<path d="M113 48 123 52 122 60 112 57Z" fill="#c7d9de"/>
-<path d="M72 60H105" stroke="#b7c6c8" stroke-dasharray="3 3"/>
-</g>
-<g class="unit-rotor" transform-origin="112px 32px"><path d="M17 30H207" stroke="#d9e7eb" stroke-width="3" stroke-linecap="round"/><path d="M64 30H156" stroke="#607b86" stroke-width="6" stroke-linecap="round" opacity=".65"/></g>
-<circle cx="112" cy="32" r="5" fill="#c2d4da" stroke="#edf9fc" stroke-width="1.5"/>
-<g class="unit-prop" transform-origin="211px 31px"><path d="M211 14V48M195 31H227" stroke="#d9e7eb" stroke-width="2.5" stroke-linecap="round"/></g>
-<path d="M50 92 27 99 61 97" fill="none" stroke="#7ad7ff" stroke-width="1.2" opacity=".65"/>
-<path d="M74 57 110 59 111 70 72 69Z" fill="#253a40" stroke="#a9bdc3"/><path d="M80 61H104M80 65H104" stroke="#8da4ab" stroke-width="1"/>
-</svg></div><div class="arsenal-label"><span>RECON HELICOPTER</span><small>RECON</small></div><div class="unit-subtitle">SCOUT & SURVEILLANCE</div><div class="unit-index">UNIT // 08</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#e2c28a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u9metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u9armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u9glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u9wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u9glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u9shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u9shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u9armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u9armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u9metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u9metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>SUPPLY CONVOY</span><small>SUPPORT</small></div><div class="unit-subtitle">FIELD LOGISTICS</div><div class="unit-index">UNIT // 09</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u10metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u10armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u10glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u10wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u10glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u10shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u10shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u10armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u10armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u10metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u10metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>MOBILE ANTI-AIR</span><small>DEFENSE</small></div><div class="unit-subtitle">AIR DEFENSE</div><div class="unit-index">UNIT // 10</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#c4a7ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u11metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u11armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u11glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u11wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u11glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u11shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u11shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u11armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u11armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u11metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u11metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>COMBAT ENGINEER</span><small>SUPPORT</small></div><div class="unit-subtitle">FIELD SUPPORT</div><div class="unit-index">UNIT // 11</div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#ff8a52"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
-<linearGradient id="u12metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
-<linearGradient id="u12armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
-<linearGradient id="u12glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
-<linearGradient id="u12wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
-<radialGradient id="u12glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
-<filter id="u12shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
-<g filter="url(#u12shadow)">
-<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
-<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u12armor)" stroke="#b0bca9" stroke-width="1.5"/>
-<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
-<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
-<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u12armor)" stroke="#c0c9b3" stroke-width="1.5"/>
-<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
-<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u12metal)" stroke="#c6d2cb" stroke-width="1.4"/>
-<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u12metal)" stroke="#d0d8d7" stroke-width="1.4"/>
-<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
-<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
-<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
-<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
-<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
-<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
-<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
-<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
-<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
-
-</g>
-<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
-<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
-</svg></div><div class="arsenal-label"><span>HEAVY MISSILE UNIT</span><small>LONG RANGE</small></div><div class="unit-subtitle">PRECISION STRIKE</div><div class="unit-index">UNIT // 12</div></article></div>
-<div class="unit-footnote"><span class="status-dot"></span> TACTICAL VISUAL SYSTEM <span>•</span> 12 ASSET PROFILES <span>•</span> MOTION ENABLED</div>
+<section class="arsenal-section waru-3d-section" id="arsenal">
+<div class="wrap">
+<div class="arsenal-heading reveal"><div><div class="eyebrow">WARU TACTICAL LAB / REAL-TIME 3D</div><h2>MEET THE<br><span>WAR MACHINES.</span></h2></div><p>Haqiqiy real-time 3D sahna: metall PBR materiallari, yumshoq soyalar, yoritish, aylantirib ko‘rish va 12 ta texnika profilidan tanlash.</p></div>
+<div class="waru3d-layout">
+<div class="waru3d-stage" id="waru3d-stage">
+<div class="waru3d-topline"><span><i class="waru3d-live"></i> LIVE RENDER / WEBGL</span><span id="waru3d-counter">ASSET 01 / 12</span></div>
+<div class="waru3d-loading" id="waru3d-loading"><span class="waru3d-spinner"></span><b>INITIALIZING 3D ENGINE</b><small>Loading real-time materials & lighting…</small></div>
+<canvas id="waru3d-canvas" aria-label="Interactive real-time 3D military vehicle viewer"></canvas>
+<div class="waru3d-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="waru3d-bottomline"><span id="waru3d-modelname">M1A2 ABRAMS</span><span>DRAG TO ROTATE · SCROLL TO ZOOM</span></div>
+<div class="waru3d-controls"><button id="waru3d-reset" type="button" aria-label="Reset camera">⟳ RESET VIEW</button><button id="waru3d-spin" type="button" aria-pressed="true">◉ AUTO ROTATE</button></div>
+</div>
+<aside class="waru3d-side"><div class="waru3d-sidehead"><span>ASSET SELECTOR</span><small>12 MODELS</small></div><div class="waru3d-units" id="waru3d-units">
+<button class="waru3d-unit is-active" type="button" data-unit="0" aria-pressed="true"><span class="waru3d-unitno">01</span><span class="waru3d-unittext"><b>M1A2 ABRAMS</b><small>MAIN BATTLE TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="1" aria-pressed="false"><span class="waru3d-unitno">02</span><span class="waru3d-unittext"><b>F-22 RAPTOR</b><small>STEALTH FIGHTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="2" aria-pressed="false"><span class="waru3d-unitno">03</span><span class="waru3d-unittext"><b>AH-64 APACHE</b><small>ATTACK HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="3" aria-pressed="false"><span class="waru3d-unitno">04</span><span class="waru3d-unittext"><b>MLRS LAUNCHER</b><small>ROCKET ARTILLERY</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="4" aria-pressed="false"><span class="waru3d-unitno">05</span><span class="waru3d-unittext"><b>ARMORED CARRIER</b><small>MECHANIZED UNIT</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="5" aria-pressed="false"><span class="waru3d-unitno">06</span><span class="waru3d-unittext"><b>F-35 LIGHTNING</b><small>MULTIROLE FIGHTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="6" aria-pressed="false"><span class="waru3d-unitno">07</span><span class="waru3d-unittext"><b>SELF-PROPELLED GUN</b><small>HEAVY ARTILLERY</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="7" aria-pressed="false"><span class="waru3d-unitno">08</span><span class="waru3d-unittext"><b>RECON HELICOPTER</b><small>SCOUT AIRCRAFT</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="8" aria-pressed="false"><span class="waru3d-unitno">09</span><span class="waru3d-unittext"><b>SUPPLY CONVOY</b><small>FIELD LOGISTICS</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="9" aria-pressed="false"><span class="waru3d-unitno">10</span><span class="waru3d-unittext"><b>MOBILE ANTI-AIR</b><small>AIR DEFENSE</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="10" aria-pressed="false"><span class="waru3d-unitno">11</span><span class="waru3d-unittext"><b>COMBAT ENGINEER</b><small>SUPPORT VEHICLE</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="11" aria-pressed="false"><span class="waru3d-unitno">12</span><span class="waru3d-unittext"><b>HEAVY MISSILE UNIT</b><small>LONG-RANGE STRIKE</small></span><span class="waru3d-unitarrow">↗</span></button>
+</div><div class="waru3d-sidefoot"><span class="waru3d-live"></span> INTERACTIVE 3D ASSET DATABASE</div></aside>
+</div>
+<div class="waru3d-specs"><div><small>RENDER MODE</small><b>REAL-TIME WEBGL</b></div><div><small>SURFACE DETAIL</small><b>PBR-STYLE METALS</b></div><div><small>VIEW CONTROL</small><b>ROTATE · ZOOM · RESET</b></div><div><small>ANIMATION</small><b>LIVE MECHANICAL MOTION</b></div></div>
 </div></section><section id="features"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Nega Waru Edition?</div><h2>STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.</h2></div><p>O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.</p></div><div class="features">
 <article class="feature reveal" style="--glow:#34b9ff"><div class="feature-top"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M10 18h4"/></svg></div><span class="index">01 / PLAY</span></div><h3>Mobil strategiya</h3><p>Generals uslubidagi katta janglarni mobil qurilmada his qilish uchun yaratilgan loyiha tajribasi.</p></article>
 <article class="feature reveal" style="--glow:#ff703a"><div class="feature-top"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 20 7v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><span class="index">02 / CONTROL</span></div><h3>Boshqaruv erkinligi</h3><p>Mobil ekran uchun moslashgan interfeys va taktik o‘yin jarayoniga e’tibor.</p></article>
@@ -553,5 +240,61 @@ const menuToggle=document.getElementById('menuToggle');const navlinks=document.g
 // Reading progress indicator — lightweight and mobile-friendly.
 const readingProgress=document.getElementById('readingProgress');
 const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};window.addEventListener('scroll',updateReadingProgress,{passive:true});updateReadingProgress();
+</script>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js';
+(()=>{
+const canvas=document.getElementById('waru3d-canvas'),stage=document.getElementById('waru3d-stage'),loading=document.getElementById('waru3d-loading');
+if(!canvas||!stage)return;
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer,scene,camera,model,active=0,autoRotate=!reduce,dragging=false,lastX=0,lastY=0,rotX=-.13,rotY=-.55,zoom=1,frame=0,disposed=false;
+const mats={};
+const mat=(name,color,rough=.5,metal=.65,extra={})=>mats[name]||(mats[name]=new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra}));
+const armor=mat('armor',0x59695a,.68,.62),armorLight=mat('armorLight',0x87927c,.53,.66),armorDark=mat('armorDark',0x27332f,.78,.5),steel=mat('steel',0x647985,.34,.82),steelDark=mat('steelDark',0x202c34,.47,.8),rubber=mat('rubber',0x101518,.9,.05),glass=mat('glass',0x123d50,.16,.55,{metalness:.4,transparent:true,opacity:.92}),glassHi=mat('glassHi',0x9edff0,.18,.3,{emissive:0x16405a,emissiveIntensity:.22}),light=mat('light',0xffc66e,.24,.3,{emissive:0xff7c2e,emissiveIntensity:1.2}),blue=mat('blue',0x65ceff,.3,.45,{emissive:0x1685b4,emissiveIntensity:.45}),dark=mat('dark',0x111a20,.72,.25),camo=mat('camo',0x4c6250,.8,.4),white=mat('white',0xc5d3d7,.35,.72),missile=mat('missile',0xc2c9c5,.43,.6);
+const group=()=>new THREE.Group();
+function mesh(g,geo,material,pos=[0,0,0],rot=[0,0,0]){const m=new THREE.Mesh(geo,material);m.position.set(...pos);m.rotation.set(...rot);m.castShadow=true;m.receiveShadow=true;g.add(m);return m}
+function box(g,x,y,z,w,h,d,material,bevel=0){const geo=new THREE.BoxGeometry(w,h,d);return mesh(g,geo,material,[x,y,z])}
+function cyl(g,x,y,z,r1,r2,len,material,axis='y',segments=20){const m=mesh(g,new THREE.CylinderGeometry(r1,r2,len,segments),material,[x,y,z]);if(axis==='x')m.rotation.z=Math.PI/2;if(axis==='z')m.rotation.x=Math.PI/2;return m}
+function sphere(g,x,y,z,rx,ry,rz,material,seg=18){const m=mesh(g,new THREE.SphereGeometry(1,seg,Math.max(8,Math.floor(seg*.65))),material,[x,y,z]);m.scale.set(rx,ry,rz);return m}
+function line(g,a,b,r,material){const av=new THREE.Vector3(...a),bv=new THREE.Vector3(...b),dir=bv.clone().sub(av);const m=mesh(g,new THREE.CylinderGeometry(r,r,dir.length(),8),material,av.clone().add(bv).multiplyScalar(.5).toArray());m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.normalize());return m}
+function wheel(g,x,y,z,r=.34){cyl(g,x,y,z,r,r,.18,rubber,'z',24);cyl(g,x,y,z+(z>0?.1:-.1),r*.57,r*.57,.035,steel,'z',16);cyl(g,x,y,z+(z>0?.122:-.122),r*.22,r*.22,.04,armorLight,'z',12);for(let i=0;i<8;i++){const a=i*Math.PI/4;box(g,x+Math.cos(a)*r*.77,y+Math.sin(a)*r*.77,z,r*.16,r*.16,.2,steelDark)}}
+function tread(g,z){const loop=group();g.add(loop);const points=[];const rx=1.52,ry=.37;for(let i=0;i<48;i++){const a=i/48*Math.PI*2;points.push(new THREE.Vector3(rx*Math.cos(a),ry*Math.sin(a),0))}for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],d=b.clone().sub(a);const m=mesh(loop,new THREE.BoxGeometry(d.length()+.035,.16,.15),steelDark,a.clone().add(b).multiplyScalar(.5).toArray());m.rotation.z=Math.atan2(d.y,d.x);m.position.z=z}for(let i=0;i<9;i++){const a=i/9*Math.PI*2;wheel(loop,1.13*Math.cos(a),.23+.29*Math.sin(a),z,.265)}box(loop,0,.25,z,.95,.18,.19,armorDark);return loop}
+function turret(g,scale=1){const t=group();g.add(t);t.position.set(.1,.8,0);const s=scale;mesh(t,new THREE.CylinderGeometry(.65*s,.76*s,.24*s,8),armorDark,[0,0,0]);mesh(t,new THREE.BoxGeometry(1.15*s,.35*s,.95*s),armor,[.02,.23*s,0],[0,.03,0]);mesh(t,new THREE.BoxGeometry(.67*s,.24*s,.72*s),armorLight,[-.12,.43*s,0]);mesh(t,new THREE.BoxGeometry(.38*s,.2*s,.42*s),steel,[-.28,.55*s,0]);cyl(t,.75*s,.31*s,0,.095*s,.095*s,1.8*s,steel,'x',16);cyl(t,1.65*s,.31*s,0,.13*s,.13*s,.22*s,steelDark,'x',12);for(let i=0;i<3;i++)box(t,-.25*s,.49*s,(i-1)*.2*s,.23*s,.03*s,.035*s,steel);sphere(t,-.08*s,.57*s,.1*s,.05*s,.035*s,.035*s,light,10);return t}
+function makeTank(kind=0){const g=group();const base=kind===2?armor:kind===1?steel:armor;box(g,0,.53,0,2.85,.48,1.45,base);box(g,-.12,.78,0,2.05,.32,1.2,armorLight);box(g,-.1,.94,0,1.25,.1,.84,armor);tread(g,.72);tread(g,-.72);for(let i=0;i<7;i++){box(g,-1.05+i*.35,.79,.735,.12,.12,.025,steelDark);box(g,-1.05+i*.35,.79,-.735,.12,.12,.025,steelDark)}for(let i=0;i<4;i++){box(g,-.92+i*.56,1.02,.35,.25,.035,.08,armorDark);box(g,-.92+i*.56,1.02,-.35,.25,.035,.08,armorDark)}const t=turret(g,kind===1?.84:1);if(kind===1){t.rotation.y=.2;for(let i=0;i<4;i++){const m=mesh(g,new THREE.CylinderGeometry(.09,.09,.95,12),missile,[.1,1.6,(i-1.5)*.24],[0,0,Math.PI/2]);m.rotation.z=Math.PI/2;box(g,-.25,1.2,(i-1.5)*.24,.48,.12,.14,steelDark)}}else if(kind===2){for(let i=0;i<2;i++){cyl(g,-.1,1.12,(i?-.4:.4),.075,.075,1.1,steel,'x');}}for(let x of [-1.18,1.18])for(let z of [-.45,.45]){sphere(g,x,.82,z,.08,.07,.07,light,10)}for(let i=0;i<6;i++){const x=-.9+i*.33;box(g,x,.82,.745,.16,.06,.02,steelDark);box(g,x,.82,-.745,.16,.06,.02,steelDark)}box(g,-.65,1.07,0,.24,.12,.32,armorDark);cyl(g,-.65,1.14,0,.055,.055,.14,steel,'y',12);return g}
+function makeJet(kind=0){const g=group();const stealth=kind!==1;mesh(g,new THREE.ConeGeometry(.2,3.45,10),steel,[0,.12,0],[Math.PI/2,0,0]);box(g,0,.06,0,.46,.3,2.65,steel);const wing=mesh(g,new THREE.BoxGeometry(3.15,.13,1.2),steel,[0,-.02,.05],[0,0,.03]);wing.scale.set(1,1,1);mesh(g,new THREE.BoxGeometry(1.45,.12,.52),armorDark,[0,.05,-1.05]);mesh(g,new THREE.BoxGeometry(1.7,.12,.45),steel,[0,.04,1.16]);mesh(g,new THREE.ConeGeometry(.23,.82,12),glass,[0,.32,-.48],[Math.PI/2,0,0]);sphere(g,0,.28,-.46,.16,.1,.32,glassHi,16);for(let s of [-1,1]){mesh(g,new THREE.BoxGeometry(.1,.1,.75),steelDark,[s*.9,-.19,.35]);cyl(g,s*.9,-.21,.55,.065,.065,.42,missile,'z',12);cyl(g,s*.9,-.21,.89,.06,.025,.16,light,'z',10);box(g,s*.55,-.08,1.18,.18,.13,.3,steelDark)}for(let i=0;i<3;i++){const x=(i-1)*.18;cyl(g,x,-.02,1.56,.09,.09,.25,dark,'z',16);sphere(g,x,-.02,1.71,.07,.07,.07,blue,10)}mesh(g,new THREE.BoxGeometry(.12,.4,.65),steel,[.48,.18,.85],[.25,0,.2]);mesh(g,new THREE.BoxGeometry(.12,.4,.65),steel,[-.48,.18,.85],[-.25,0,-.2]);for(let s of [-1,1]){sphere(g,s*1.5,-.03,.05,.045,.035,.07,light,10)}return g}
+function makeHeli(kind=0){const g=group();const body=mesh(g,new THREE.SphereGeometry(1,28,18),armor,[0,.18,0]);body.scale.set(.57,.53,1.25);mesh(g,new THREE.ConeGeometry(.26,1.45,12),armor,[0,.14,1.48],[Math.PI/2,0,0]);for(let s of [-1,1]){mesh(g,new THREE.BoxGeometry(.52,.08,.95),armor,[s*.72,.03,.18],[0,0,s*.05]);cyl(g,s*.72,-.04,.25,.09,.09,.88,steel,'z',12);mesh(g,new THREE.BoxGeometry(.1,.38,.55),steel,[s*.72,.17,.38],[0,0,s*.2]);}sphere(g,0,.36,-.69,.43,.32,.54,glass,24);mesh(g,new THREE.BoxGeometry(.045,.3,.8),steel,[0,.37,-.73]);line(g,[-.48,-.48,-.52],[.48,-.48,-.52],.045,steel);line(g,[-.48,-.48,.56],[.48,-.48,.56],.045,steel);for(let s of [-1,1])line(g,[s*.36,-.3,-.42],[s*.48,-.52,-.52],.035,steel);const rotor=group();g.add(rotor);rotor.position.y=.77;for(let i=0;i<4;i++){const a=i*Math.PI/2;const b=mesh(rotor,new THREE.BoxGeometry(.17,.035,3.25),steel,[Math.sin(a)*.8,0,Math.cos(a)*.8],[0,a,0]);b.rotation.y=a;}cyl(rotor,0,.04,0,.13,.13,.14,steel,'y',16);g.userData.rotor=rotor;const tailrotor=group();g.add(tailrotor);tailrotor.position.set(0,.28,2.03);for(let i=0;i<4;i++){const b=mesh(tailrotor,new THREE.BoxGeometry(.08,.68,.1),white,[0,0,0],[0,0,i*Math.PI/2]);b.position.y=Math.sin(i*Math.PI/2)*.3;b.position.x=Math.cos(i*Math.PI/2)*.3}g.userData.tailrotor=tailrotor;for(let s of [-1,1])sphere(g,s*.49,.12,-.65,.045,.045,.05,light,10);return g}
+function makeTruck(kind=0){const g=group();box(g,-.2,.62,0,2.2,.5,1.08,armor);box(g,-.67,.98,0,.68,.42,1.02,armorLight);box(g,-.63,1.03,-.525,.4,.25,.025,glass);box(g,-.63,1.03,.525,.4,.25,.025,glass);box(g,.52,.97,0,1.05,.58,1.04,kind===1?steel:armor);for(let s of [-1,1])for(let x of [-.85,-.1,.65])wheel(g,x,.32,s*.56,.26);for(let i=0;i<5;i++){box(g,.1+i*.17,1.28,0,.08,.08,.8,steelDark)}box(g,-1.22,.56,0,.12,.22,1.16,steel);for(let s of [-1,1])sphere(g,-1.06,.68,s*.36,.07,.07,.07,light,10);return g}
+function makeAA(){const g=makeTank(0);const gun=group();g.add(gun);gun.position.set(.1,1.18,0);mesh(gun,new THREE.BoxGeometry(.8,.32,.78),armorLight);for(let s of [-1,1])for(let z of [-.23,.23]){cyl(gun,.72,.03,z,.055,.055,1.22,steel,'x',12);cyl(gun,1.32,.03,z,.075,.075,.1,steelDark,'x',12)}gun.rotation.y=-.25;return g}
+function makeUnit(index){switch(index){case 0:return makeTank(0);case 1:return makeJet(0);case 2:return makeHeli(0);case 3:return makeTank(1);case 4:return makeTruck(0);case 5:return makeJet(1);case 6:return makeTank(2);case 7:return makeHeli(1);case 8:return makeTruck(1);case 9:return makeAA();case 10:return makeTruck(0);default:return makeTank(1)}}
+const names=['M1A2 ABRAMS','F-22 RAPTOR','AH-64 APACHE','MLRS LAUNCHER','ARMORED CARRIER','F-35 LIGHTNING','SELF-PROPELLED GUN','RECON HELICOPTER','SUPPLY CONVOY','MOBILE ANTI-AIR','COMBAT ENGINEER','HEAVY MISSILE UNIT'];
+try{
+renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.65));renderer.setSize(stage.clientWidth,stage.clientHeight,false);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
+scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x0b1823,.045);
+camera=new THREE.PerspectiveCamera(35,stage.clientWidth/stage.clientHeight,.1,100);camera.position.set(5.5,3.2,7.2);camera.lookAt(0,.4,0);
+scene.add(new THREE.HemisphereLight(0xc6e8ff,0x1a241f,2.1));
+const key=new THREE.DirectionalLight(0xffe5c6,3.5);key.position.set(4,8,5);key.castShadow=true;key.shadow.mapSize.set(1024,1024);key.shadow.camera.left=-7;key.shadow.camera.right=7;key.shadow.camera.top=7;key.shadow.camera.bottom=-7;key.shadow.bias=-.0003;scene.add(key);
+const rim=new THREE.DirectionalLight(0x4abaff,3.1);rim.position.set(-5,4,-4);scene.add(rim);const fill=new THREE.PointLight(0x7ad8ff,22,12);fill.position.set(1,2,4);scene.add(fill);
+const floor=mesh(scene,new THREE.PlaneGeometry(200,200),mat('floor',0x111d25,.86,.28),[0,-.1,0],[-Math.PI/2,0,0]);floor.receiveShadow=true;
+const grid=new THREE.GridHelper(32,48,0x35708a,0x234355);grid.position.y=-.085;grid.material.transparent=true;grid.material.opacity=.28;scene.add(grid);
+const ring=mesh(scene,new THREE.TorusGeometry(2.55,.012,8,100),mat('ring',0x4aa7c9,.38,.4,{emissive:0x1b6684,emissiveIntensity:.45}),[0,-.06,0]);ring.rotation.x=Math.PI/2;
+for(let i=0;i<48;i++){const a=i/48*Math.PI*2;const p=mesh(scene,new THREE.BoxGeometry(.07,.012,.16),steelDark,[Math.cos(a)*2.55,-.05,Math.sin(a)*2.55]);p.rotation.y=-a;}
+model=makeUnit(0);scene.add(model);
+function fit(){if(!renderer||!camera)return;const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+new ResizeObserver(fit).observe(stage);
+function select(i){active=i;const next=makeUnit(i);scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose()});model=next;scene.add(model);rotY=-.55;rotX=-.13;zoom=1;model.rotation.set(rotX,rotY,0);camera.position.set(5.5/zoom,3.2/zoom,7.2/zoom);camera.lookAt(0,.4,0);document.getElementById('waru3d-counter').textContent='ASSET '+String(i+1).padStart(2,'0')+' / 12';document.getElementById('waru3d-modelname').textContent=names[i];document.querySelectorAll('.waru3d-unit').forEach((b,j)=>{b.classList.toggle('is-active',j===i);b.setAttribute('aria-pressed',j===i?'true':'false')})}
+document.getElementById('waru3d-units').addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b)select(Number(b.dataset.unit))});
+document.getElementById('waru3d-reset').addEventListener('click',()=>{rotX=-.13;rotY=-.55;zoom=1;camera.position.set(5.5,3.2,7.2);camera.lookAt(0,.4,0)});
+document.getElementById('waru3d-spin').addEventListener('click',e=>{autoRotate=!autoRotate;e.currentTarget.setAttribute('aria-pressed',String(autoRotate));e.currentTarget.textContent=autoRotate?'◉ AUTO ROTATE':'○ AUTO ROTATE'});
+canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing'});
+canvas.addEventListener('pointermove',e=>{if(!dragging)return;rotY+=(e.clientX-lastX)*.008;rotX+=(e.clientY-lastY)*.005;rotX=Math.max(-.75,Math.min(.65,rotX));lastX=e.clientX;lastY=e.clientY});
+function endDrag(){dragging=false;canvas.style.cursor='grab'}canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);
+canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.7,Math.min(1.65,zoom+(e.deltaY>0?-.08:.08)));camera.position.set(5.5/zoom,3.2/zoom,7.2/zoom);camera.lookAt(0,.4,0)},{passive:false});
+canvas.style.cursor='grab';
+function animate(){if(disposed)return;frame=requestAnimationFrame(animate);const t=performance.now()*.001;if(model){if(autoRotate&&!dragging)rotY+=.0022;model.rotation.set(rotX,rotY,0);model.position.y=.015+Math.sin(t*1.1)*.018;if(model.userData.rotor)model.userData.rotor.rotation.y=t*7;if(model.userData.tailrotor)model.userData.tailrotor.rotation.z=t*12;model.traverse(o=>{if(o.material===light)o.material.emissiveIntensity=.7+Math.sin(t*3)*.35})}ring.rotation.z=t*.045;renderer.render(scene,camera)}
+animate();loading.classList.add('is-hidden');setTimeout(()=>loading.remove(),500);
+}catch(err){console.error('Waru 3D engine could not start',err);loading.innerHTML='<b>3D VIEWER UNAVAILABLE</b><small>Ushbu brauzerda WebGL yoki 3D modulini yuklash bloklangan. Sahifani yangilab ko‘ring.</small>'}
+})();
 </script>
 </body></html>
