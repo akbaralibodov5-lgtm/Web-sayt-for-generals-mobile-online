@@ -106,6 +106,38 @@ h1{font-size:clamp(66px,18vw,98px)}
 }
 @media(prefers-reduced-motion:reduce){.reveal{filter:none}}
 
+
+/* Photoreal-inspired unit showcase refinements */
+.arsenal-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#182c3a 0%,#090f16 42%,#06090e 100%)}
+.arsenal-section:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(#8ac9e70b 1px,transparent 1px),linear-gradient(90deg,#8ac9e70b 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.arsenal-heading{position:relative;z-index:1}
+.arsenal-grid{position:relative;z-index:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.arsenal-card{min-height:220px;padding:15px 16px 12px;border:1px solid #7f9eaf2b;background:linear-gradient(145deg,#192a34ed 0%,#0b131bed 45%,#080d12 100%);box-shadow:inset 0 1px #d8f4ff0a,0 14px 28px #0004;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.arsenal-card:hover{transform:translateY(-6px) scale(1.012);border-color:var(--unit-accent);box-shadow:inset 0 1px #e4faff16,0 18px 35px #0008,0 0 22px color-mix(in srgb,var(--unit-accent) 12%,transparent)}
+.arsenal-card:before{width:54px;height:2px;box-shadow:0 0 12px var(--unit-accent)}
+.arsenal-card:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--unit-accent),transparent);opacity:.3}
+.arsenal-visual{height:130px;position:relative;display:grid;place-items:center;isolation:isolate}
+.arsenal-visual:before{content:"";position:absolute;left:8%;right:8%;bottom:12px;height:25px;border-radius:50%;background:radial-gradient(ellipse,#7dcff51c,transparent 72%);filter:blur(5px);z-index:-1}
+.arsenal-visual:after{content:"";position:absolute;left:10%;right:10%;bottom:4px;height:1px;background:linear-gradient(90deg,transparent,#89c6de42,transparent)}
+.arsenal-visual svg{width:100%;height:122px;max-width:280px;overflow:visible;filter:drop-shadow(0 10px 8px #0008);transition:filter .3s ease}
+.arsenal-card:hover .arsenal-visual svg{filter:drop-shadow(0 10px 9px #0009) drop-shadow(0 0 7px color-mix(in srgb,var(--unit-accent) 28%,transparent))}
+.arsenal-label{margin-top:5px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.08em;color:#f1f7f8}
+.arsenal-label small{white-space:nowrap;color:var(--unit-accent);font-size:8px;letter-spacing:.1em}
+.unit-subtitle{font-size:9px;letter-spacing:.15em;color:#8ca4b1;margin-top:7px}
+.unit-index{position:absolute;right:14px;bottom:11px;font-size:8px;letter-spacing:.15em;color:#536977}
+.unit-footnote{position:relative;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:25px;color:#617a89;font-size:9px;letter-spacing:.16em}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#7ce3b2;box-shadow:0 0 10px #7ce3b2;animation:statusPulse 1.8s ease-in-out infinite}
+@keyframes statusPulse{0%,100%{opacity:.55;box-shadow:0 0 4px #7ce3b2}50%{opacity:1;box-shadow:0 0 12px #7ce3b2}}
+.arsenal-card:nth-child(3n+1) .arsenal-visual svg{animation:armorIdle 5.2s ease-in-out infinite}
+.arsenal-card:nth-child(3n+2) .arsenal-visual svg{animation:aircraftIdle 4.5s ease-in-out infinite}
+.arsenal-card:nth-child(3n) .arsenal-visual svg{animation:rotorCraftIdle 4s ease-in-out infinite}
+@keyframes armorIdle{0%,100%{transform:translateY(1px)}50%{transform:translateY(-2px)}}
+@keyframes aircraftIdle{0%,100%{transform:translate(0,1px) rotate(-.6deg)}50%{transform:translate(2px,-3px) rotate(.6deg)}}
+@keyframes rotorCraftIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:900px){.arsenal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.arsenal-card{min-height:210px}.arsenal-visual{height:116px}.arsenal-visual svg{height:110px}}
+@media(max-width:480px){.arsenal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.arsenal-card{padding:10px 9px 12px;min-height:188px}.arsenal-visual{height:100px}.arsenal-visual svg{height:94px}.arsenal-label{font-size:12px;letter-spacing:.04em;align-items:flex-start;flex-direction:column;gap:4px}.unit-subtitle{font-size:8px}.unit-index{right:9px;bottom:8px;font-size:7px}.unit-footnote{font-size:7px;gap:6px;letter-spacing:.08em;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.arsenal-card,.arsenal-card svg,.status-dot{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -134,21 +166,377 @@ h1{font-size:clamp(66px,18vw,98px)}
 <div class="ops-cell"><span class="ops-number">03</span><span><small>Missiya</small><strong>Waru Edition community</strong></span></div>
 </div></section>
 <section class="arsenal-section" id="arsenal"><div class="wrap">
-<div class="arsenal-heading reveal"><div><div class="eyebrow">Battlefield / Unit showcase</div><h2>HAR BIR BO‘LINMA.<br><span>O‘Z MISSIYASI.</span></h2></div><p>Jang maydonidagi turli bo‘linmalardan ilhomlangan animatsion mini-sahnalar: harakat, rotor aylanishi, izlar, nishonga olish va reaktiv effektlar.</p></div>
-<div class="arsenal-grid">
-<article class="arsenal-card reveal" style="--unit-accent:#61caff"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#263e4a" stroke="#a5c7d7" stroke-width="2"><path d="M23 59 35 43 137 43 157 59 150 72 28 72Z"/><path d="M48 44 61 28 111 28 131 44Z" fill="#66899a"/><path d="M78 30 87 18 113 19 117 27Z" fill="#9cbac8"/></g><path d="M103 22 153 15 155 20 115 29Z" fill="#b9d6e4"/><g fill="#081119" stroke="#9db7c6" stroke-width="2"><circle cx="43" cy="62" r="8"/><circle cx="66" cy="62" r="8"/><circle cx="89" cy="62" r="8"/><circle cx="112" cy="62" r="8"/><circle cx="135" cy="62" r="8"/></g><path class="unit-track" d="M31 75H148" stroke="#ff8a52" stroke-width="2"/></svg></div><div class="arsenal-label">Battle Tank <small>GROUND</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#ff8a52"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><path d="M12 46 68 37 93 12 105 15 99 37 141 42 165 48 141 54 99 57 105 78 93 80 68 57Z" fill="#7999aa" stroke="#d4e9f3" stroke-width="1.5"/><path d="m69 42 26-25 6 1-12 25m-20 10 26 25 6-1-12-25Z" fill="#304f61"/><path d="M18 48h18" stroke="#ff744b" stroke-width="3"/></svg></div><div class="arsenal-label">Fighter Jet <small>AIR</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#8fe7d5"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#6c8b9b" stroke="#c2e0ed" stroke-width="1.5"><path d="M38 43 54 29 103 30 128 42 124 54 74 60 45 54Z"/><path d="m104 39 41-10 5 4-26 14-2 8-10-1Z"/><path d="m54 43-23-9-7 3 16 16Z"/></g><path d="M69 28 76 16 98 17 105 31Z" fill="#bad8e5"/><path class="unit-rotor" d="M22 17H134" stroke="#e4f6ff" stroke-width="3" stroke-linecap="round"/><path class="unit-prop" d="M147 34v17m-7-8h15" stroke="#d6f2ff" stroke-width="2"/><path d="M77 37h18" stroke="#ff7147" stroke-width="3"/></svg></div><div class="arsenal-label">Attack Heli <small>AIR</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#d6b1ff"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#354d59" stroke="#b0c9d7" stroke-width="1.5"><path d="M20 56 32 43 128 43 145 55 141 69 25 69Z"/><path d="M45 44 57 31 100 31 119 44Z"/></g><g fill="#08121a" stroke="#9bb6c5" stroke-width="2"><circle cx="42" cy="59" r="7"/><circle cx="63" cy="59" r="7"/><circle cx="84" cy="59" r="7"/><circle cx="105" cy="59" r="7"/><circle cx="126" cy="59" r="7"/></g><g class="unit-turret"><path d="M70 34 78 24 104 24 113 35Z" fill="#809dac" stroke="#d4e6ef" stroke-width="1.5"/><path d="M95 27 152 16 154 20 101 33Z" fill="#b5cdd8"/></g><path d="M147 12h17" stroke="#ff7651" stroke-width="2"/></svg></div><div class="arsenal-label">Rocket Launcher <small>SUPPORT</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#637f8c" stroke="#bdd7e2" stroke-width="1.4"><path d="M24 57 36 43 137 43 151 56 147 68 28 68Z"/><path d="M43 44 54 34 115 34 128 44Z"/></g><g fill="#0a131b" stroke="#a2bdca" stroke-width="2"><circle cx="44" cy="58" r="7"/><circle cx="67" cy="58" r="7"/><circle cx="90" cy="58" r="7"/><circle cx="113" cy="58" r="7"/><circle cx="136" cy="58" r="7"/></g><path d="M74 34 82 24 99 24 105 34Z" fill="#b1c9d5"/><path d="M91 25 93 13 99 13 98 26Z" fill="#d6e8f0"/><path d="M96 13 99 6 102 13Z" fill="#ff9a51" class="unit-flame"/><path d="M29 72H146" stroke="#b9f58a" stroke-width="2" stroke-dasharray="4 4" class="unit-track"/></svg></div><div class="arsenal-label">Armored Carrier <small>GROUND</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#70baff"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><path d="M16 46 70 39 94 13 107 15 101 39 144 43 166 48 144 53 101 57 107 77 94 79 70 57Z" fill="#66889b" stroke="#c5dce8" stroke-width="1.5"/><path d="M37 45 63 43 79 48 63 53 37 51Z" fill="#b7d2df"/><path d="M26 48h15" stroke="#ff8b50" stroke-width="3"/><path class="unit-prop" d="M83 27 93 20 98 22 90 32Z" fill="#d9f2ff"/></svg></div><div class="arsenal-label">Stealth Aircraft <small>AIR</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#ffb27c"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#5e7c8b" stroke="#b7d0dc" stroke-width="1.5"><path d="M24 57 34 45 137 45 151 57 147 68 28 68Z"/><path d="M51 45 62 32 105 32 120 45Z"/></g><g fill="#0b151d" stroke="#a6bfcc" stroke-width="2"><circle cx="43" cy="59" r="7"/><circle cx="66" cy="59" r="7"/><circle cx="89" cy="59" r="7"/><circle cx="112" cy="59" r="7"/><circle cx="135" cy="59" r="7"/></g><path d="M80 34 89 26 111 27 120 35Z" fill="#a2bac8"/><path d="M104 29 148 22 151 26 116 36Z" fill="#d2e3eb"/><path d="M151 20h13" stroke="#ffb27c" stroke-width="2"/></svg></div><div class="arsenal-label">Artillery <small>LONG RANGE</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#89d8ff"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#6b8a9b" stroke="#c4deea" stroke-width="1.5"><path d="M47 42 63 30 110 31 132 43 127 54 73 60 51 54Z"/><path d="m111 41 33-9 5 4-22 13-5 6-8-2Z"/></g><path d="M70 29 78 16 98 17 108 31Z" fill="#b8d7e4"/><path class="unit-rotor" d="M30 17H140" stroke="#e4f6ff" stroke-width="3" stroke-linecap="round"/><path class="unit-prop" d="M145 34v18m-8-9h16" stroke="#d6f2ff" stroke-width="2"/><path class="unit-searchlight" d="M78 56 52 82 101 82Z" fill="#71d5ff" opacity=".2"/><circle cx="82" cy="48" r="3" fill="#b9f58a"/></svg></div><div class="arsenal-label">Recon Drone <small>RECON</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#e2c28a"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#82969b" stroke="#d1e1e5" stroke-width="1.4"><path d="M30 55 41 44 124 44 145 55 141 67 34 67Z"/><path d="M50 44 60 31 102 31 118 44Z"/></g><path d="M64 32 76 25 90 25 100 33Z" fill="#bed2d8"/><g fill="#0a141a" stroke="#a6bdc7" stroke-width="2"><circle cx="48" cy="58" r="7"/><circle cx="72" cy="58" r="7"/><circle cx="96" cy="58" r="7"/><circle cx="120" cy="58" r="7"/></g><path d="M143 56 157 46 164 49 150 62Z" fill="#ff8952"/><path d="M32 72H142" stroke="#e2c28a" stroke-width="2" stroke-dasharray="3 5" class="unit-track"/></svg></div><div class="arsenal-label">Supply Truck <small>LOGISTICS</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#405d68" stroke="#b7d0d9" stroke-width="1.4"><path d="M22 57 33 44 130 44 149 57 145 69 27 69Z"/><path d="M47 44 57 34 104 34 121 44Z"/></g><g fill="#09131b" stroke="#b2c7d0" stroke-width="2"><circle cx="44" cy="59" r="7"/><circle cx="67" cy="59" r="7"/><circle cx="90" cy="59" r="7"/><circle cx="113" cy="59" r="7"/><circle cx="136" cy="59" r="7"/></g><path d="M73 35 81 24 97 24 106 35Z" fill="#93b2c1"/><path d="M87 26 111 17 137 17 141 21 112 29Z" fill="#d3e6ed"/><path d="M136 17h12" stroke="#ff7947" stroke-width="2"/><path d="M32 73H143" stroke="#b9f58a" stroke-width="2" stroke-dasharray="4 4" class="unit-track"/></svg></div><div class="arsenal-label">Mobile Anti-Air <small>DEFENSE</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#c4a7ff"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#7895a2" stroke="#d0e3eb" stroke-width="1.3"><path d="M34 53 47 40 119 40 137 53 133 65 39 65Z"/><path d="M55 40 65 29 101 29 116 40Z"/></g><g fill="#0b141b" stroke="#9eb8c5" stroke-width="2"><circle cx="51" cy="56" r="7"/><circle cx="76" cy="56" r="7"/><circle cx="101" cy="56" r="7"/><circle cx="124" cy="56" r="7"/></g><path d="M78 30 86 23 100 23 108 30Z" fill="#bdd4df"/><path d="M92 25 99 10 105 12 102 28Z" fill="#d8e8ee"/><path d="M101 11 105 4 109 12Z" fill="#ff9757" class="unit-flame"/><path d="M144 18 156 12" stroke="#c4a7ff" stroke-width="2"/><circle cx="157" cy="11" r="3" fill="#c4a7ff"/></svg></div><div class="arsenal-label">Combat Engineer <small>SUPPORT</small></div></article>
-<article class="arsenal-card reveal" style="--unit-accent:#ff8a52"><div class="arsenal-visual"><svg viewBox="0 0 180 90"><g fill="#6b8796" stroke="#c5dbe5" stroke-width="1.5"><path d="M20 57 32 44 135 44 151 57 147 69 26 69Z"/><path d="M45 44 58 31 111 31 126 44Z"/></g><g fill="#0a141b" stroke="#a5bdca" stroke-width="2"><circle cx="44" cy="59" r="7"/><circle cx="67" cy="59" r="7"/><circle cx="90" cy="59" r="7"/><circle cx="113" cy="59" r="7"/><circle cx="136" cy="59" r="7"/></g><path d="M72 32 80 24 102 24 111 33Z" fill="#abc5d2"/><path d="M99 26 153 13 155 18 106 35Z" fill="#d4e6ed"/><path d="M152 11h12" stroke="#ff8a52" stroke-width="2"/><path d="M30 73H145" stroke="#ff8a52" stroke-width="2" stroke-dasharray="4 5" class="unit-track"/></svg></div><div class="arsenal-label">Heavy Launcher <small>LONG RANGE</small></div></article>
-</div></div></section><section id="features"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Nega Waru Edition?</div><h2>STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.</h2></div><p>O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.</p></div><div class="features">
+<div class="arsenal-heading reveal"><div><div class="eyebrow">TACTICAL ASSET LIBRARY / 01–12</div><h2>METALL. ZIRH.<br><span>JANG MAYDONI.</span></h2></div><p>Generals ruhidan ilhomlangan, metall qatlamlari, zirh panellari, shisha kabinalar, shassi detallari va jonli harakatlar bilan qayta ishlangan bo‘linmalar galereyasi.</p></div>
+<div class="arsenal-grid"><article class="arsenal-card reveal" style="--unit-accent:#b9d7a1"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u1metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u1armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u1glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u1wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u1glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u1shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u1shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u1armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u1armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u1metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u1metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>M1A2 ABRAMS</span><small>GROUND</small></div><div class="unit-subtitle">MAIN BATTLE TANK</div><div class="unit-index">UNIT // 01</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#77cfff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed modern fighter aircraft illustration"><defs>
+<linearGradient id="u2metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u2armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u2glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u2wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u2glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u2shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="118" cy="95" rx="82" ry="8" fill="#000" opacity=".4"/><ellipse cx="115" cy="94" rx="85" ry="13" fill="url(#u2glow)" opacity=".28"/>
+<g filter="url(#u2shadow)" stroke="#c2d0d4" stroke-width="1.1" stroke-linejoin="round">
+<path d="M13 64 74 52 104 13 119 10 128 50 183 60 224 70 181 76 129 78 118 108 105 106 92 78 49 75Z" fill="url(#u2wing)"/>
+<path d="M24 65 85 58 105 21 113 20 119 56 179 66 209 70 178 72 122 71 113 98 108 98 98 72 51 71Z" fill="#7b909b" opacity=".55"/>
+<path d="M84 54 105 16 113 17 117 56 98 65Z" fill="#d1dde0" opacity=".4"/>
+<path d="M101 53 112 31 121 53 137 62 122 70 99 66Z" fill="url(#u2metal)"/>
+<path d="M106 48 112 24 117 48Z" fill="url(#u2glass)" stroke="#c7f1ff"/>
+<path d="M110 24 112 17 115 25Z" fill="#d5f5ff"/>
+<path d="M96 63 73 69 47 70 52 73 96 73Z" fill="#243b4b"/>
+<path d="M132 63 160 68 192 70 184 73 132 73Z" fill="#243b4b"/>
+<path d="M107 76 103 94 109 101 115 78Z" fill="#d3dfe1"/>
+<path d="M121 77 127 96 121 101 116 78Z" fill="#536c7a"/>
+<path d="M16 64 47 67 54 71 21 69Z" fill="#c4d4d9"/>
+<path d="M180 68 219 70 187 74Z" fill="#d2dfe3"/>
+<path d="M75 52 106 29 110 52 94 64Z" fill="#344d60"/><path d="M132 56 165 68 131 68Z" fill="#344d60"/><path d="M56 72 77 74 67 78Z" fill="#ffb06d"/>
+<path d="M110 18 113 13 116 19" fill="none" stroke="#fff" opacity=".8"/>
+</g>
+<path d="M18 70H58" stroke="#ff9862" stroke-width="2" opacity=".7"/><path d="M177 78H218" stroke="#62cfff" stroke-width="1.5" opacity=".8"/>
+</svg></div><div class="arsenal-label"><span>F-22 RAPTOR</span><small>AIR</small></div><div class="unit-subtitle">AIR SUPERIORITY</div><div class="unit-index">UNIT // 02</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#91eadb"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed military helicopter illustration"><defs>
+<linearGradient id="u3metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u3armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u3glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u3wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u3glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u3shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="115" cy="99" rx="80" ry="8" fill="#000" opacity=".5"/>
+<g filter="url(#u3shadow)" stroke="#c0d1d6" stroke-width="1.3" stroke-linejoin="round">
+<path d="M33 62 51 46 91 39 137 44 158 57 148 71 91 78 49 71Z" fill="url(#u3armor)"/>
+<path d="M49 47 63 34 91 33 111 43 104 57 57 59Z" fill="url(#u3glass)"/>
+<path d="M65 36 88 35 103 44 97 52 62 52Z" fill="#9cd9e8" opacity=".55"/>
+<path d="M104 43 139 48 154 57 146 63 105 59Z" fill="#526b75"/>
+<path d="M137 49 196 38 201 42 159 62 150 69 143 65Z" fill="url(#u3metal)"/>
+<path d="M190 39 210 32 215 36 200 43Z" fill="#9aafb6"/>
+<path d="M204 35 211 23 216 24 214 37Z" fill="#9aafb6"/>
+<path d="M52 70 46 86 52 89 64 72M124 73 130 86 137 85 136 69" fill="none" stroke="#bacbd0" stroke-width="4"/>
+<path d="M79 76 73 89 64 89M122 76 126 89 137 89" fill="none" stroke="#708b96" stroke-width="2"/>
+<path d="M81 42 87 41 94 49 90 51Z" fill="#e0f5fa"/>
+<path d="M113 48 123 52 122 60 112 57Z" fill="#c7d9de"/>
+<path d="M72 60H105" stroke="#b7c6c8" stroke-dasharray="3 3"/>
+</g>
+<g class="unit-rotor" transform-origin="112px 32px"><path d="M17 30H207" stroke="#d9e7eb" stroke-width="3" stroke-linecap="round"/><path d="M64 30H156" stroke="#607b86" stroke-width="6" stroke-linecap="round" opacity=".65"/></g>
+<circle cx="112" cy="32" r="5" fill="#c2d4da" stroke="#edf9fc" stroke-width="1.5"/>
+<g class="unit-prop" transform-origin="211px 31px"><path d="M211 14V48M195 31H227" stroke="#d9e7eb" stroke-width="2.5" stroke-linecap="round"/></g>
+<path d="M50 92 27 99 61 97" fill="none" stroke="#7ad7ff" stroke-width="1.2" opacity=".65"/>
+
+</svg></div><div class="arsenal-label"><span>AH-64 APACHE</span><small>AIR</small></div><div class="unit-subtitle">ATTACK HELICOPTER</div><div class="unit-index">UNIT // 03</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#d0a8ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u4metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u4armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u4glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u4wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u4glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u4shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u4shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u4armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u4armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u4metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u4metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>MLRS LAUNCHER</span><small>SUPPORT</small></div><div class="unit-subtitle">ROCKET ARTILLERY</div><div class="unit-index">UNIT // 04</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u5metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u5armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u5glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u5wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u5glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u5shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u5shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u5armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u5armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u5metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u5metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>ARMORED CARRIER</span><small>GROUND</small></div><div class="unit-subtitle">MECHANIZED INFANTRY</div><div class="unit-index">UNIT // 05</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#70baff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed modern fighter aircraft illustration"><defs>
+<linearGradient id="u6metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u6armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u6glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u6wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u6glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u6shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="118" cy="95" rx="82" ry="8" fill="#000" opacity=".4"/><ellipse cx="115" cy="94" rx="85" ry="13" fill="url(#u6glow)" opacity=".28"/>
+<g filter="url(#u6shadow)" stroke="#c2d0d4" stroke-width="1.1" stroke-linejoin="round">
+<path d="M13 64 74 52 104 13 119 10 128 50 183 60 224 70 181 76 129 78 118 108 105 106 92 78 49 75Z" fill="url(#u6wing)"/>
+<path d="M24 65 85 58 105 21 113 20 119 56 179 66 209 70 178 72 122 71 113 98 108 98 98 72 51 71Z" fill="#7b909b" opacity=".55"/>
+<path d="M84 54 105 16 113 17 117 56 98 65Z" fill="#d1dde0" opacity=".4"/>
+<path d="M101 53 112 31 121 53 137 62 122 70 99 66Z" fill="url(#u6metal)"/>
+<path d="M106 48 112 24 117 48Z" fill="url(#u6glass)" stroke="#c7f1ff"/>
+<path d="M110 24 112 17 115 25Z" fill="#d5f5ff"/>
+<path d="M96 63 73 69 47 70 52 73 96 73Z" fill="#243b4b"/>
+<path d="M132 63 160 68 192 70 184 73 132 73Z" fill="#243b4b"/>
+<path d="M107 76 103 94 109 101 115 78Z" fill="#d3dfe1"/>
+<path d="M121 77 127 96 121 101 116 78Z" fill="#536c7a"/>
+<path d="M16 64 47 67 54 71 21 69Z" fill="#c4d4d9"/>
+<path d="M180 68 219 70 187 74Z" fill="#d2dfe3"/>
+<path d="M75 52 106 29 110 52 94 64Z" fill="#344d60"/><path d="M132 56 165 68 131 68Z" fill="#344d60"/><path d="M56 72 77 74 67 78Z" fill="#ffb06d"/>
+<path d="M110 18 113 13 116 19" fill="none" stroke="#fff" opacity=".8"/>
+</g>
+<path d="M18 70H58" stroke="#ff9862" stroke-width="2" opacity=".7"/><path d="M177 78H218" stroke="#62cfff" stroke-width="1.5" opacity=".8"/>
+</svg></div><div class="arsenal-label"><span>STEALTH FIGHTER</span><small>AIR</small></div><div class="unit-subtitle">LOW-OBSERVABLE AIRCRAFT</div><div class="unit-index">UNIT // 06</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#ffb27c"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u7metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u7armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u7glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u7wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u7glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u7shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u7shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u7armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u7armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u7metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u7metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>SELF-PROPELLED GUN</span><small>GROUND</small></div><div class="unit-subtitle">LONG-RANGE FIRE</div><div class="unit-index">UNIT // 07</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#89d8ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Detailed military helicopter illustration"><defs>
+<linearGradient id="u8metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u8armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u8glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u8wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u8glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u8shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="115" cy="99" rx="80" ry="8" fill="#000" opacity=".5"/>
+<g filter="url(#u8shadow)" stroke="#c0d1d6" stroke-width="1.3" stroke-linejoin="round">
+<path d="M33 62 51 46 91 39 137 44 158 57 148 71 91 78 49 71Z" fill="url(#u8armor)"/>
+<path d="M49 47 63 34 91 33 111 43 104 57 57 59Z" fill="url(#u8glass)"/>
+<path d="M65 36 88 35 103 44 97 52 62 52Z" fill="#9cd9e8" opacity=".55"/>
+<path d="M104 43 139 48 154 57 146 63 105 59Z" fill="#526b75"/>
+<path d="M137 49 196 38 201 42 159 62 150 69 143 65Z" fill="url(#u8metal)"/>
+<path d="M190 39 210 32 215 36 200 43Z" fill="#9aafb6"/>
+<path d="M204 35 211 23 216 24 214 37Z" fill="#9aafb6"/>
+<path d="M52 70 46 86 52 89 64 72M124 73 130 86 137 85 136 69" fill="none" stroke="#bacbd0" stroke-width="4"/>
+<path d="M79 76 73 89 64 89M122 76 126 89 137 89" fill="none" stroke="#708b96" stroke-width="2"/>
+<path d="M81 42 87 41 94 49 90 51Z" fill="#e0f5fa"/>
+<path d="M113 48 123 52 122 60 112 57Z" fill="#c7d9de"/>
+<path d="M72 60H105" stroke="#b7c6c8" stroke-dasharray="3 3"/>
+</g>
+<g class="unit-rotor" transform-origin="112px 32px"><path d="M17 30H207" stroke="#d9e7eb" stroke-width="3" stroke-linecap="round"/><path d="M64 30H156" stroke="#607b86" stroke-width="6" stroke-linecap="round" opacity=".65"/></g>
+<circle cx="112" cy="32" r="5" fill="#c2d4da" stroke="#edf9fc" stroke-width="1.5"/>
+<g class="unit-prop" transform-origin="211px 31px"><path d="M211 14V48M195 31H227" stroke="#d9e7eb" stroke-width="2.5" stroke-linecap="round"/></g>
+<path d="M50 92 27 99 61 97" fill="none" stroke="#7ad7ff" stroke-width="1.2" opacity=".65"/>
+<path d="M74 57 110 59 111 70 72 69Z" fill="#253a40" stroke="#a9bdc3"/><path d="M80 61H104M80 65H104" stroke="#8da4ab" stroke-width="1"/>
+</svg></div><div class="arsenal-label"><span>RECON HELICOPTER</span><small>RECON</small></div><div class="unit-subtitle">SCOUT & SURVEILLANCE</div><div class="unit-index">UNIT // 08</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#e2c28a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u9metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u9armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u9glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u9wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u9glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u9shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u9shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u9armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u9armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u9metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u9metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>SUPPLY CONVOY</span><small>SUPPORT</small></div><div class="unit-subtitle">FIELD LOGISTICS</div><div class="unit-index">UNIT // 09</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#b9f58a"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u10metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u10armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u10glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u10wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u10glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u10shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u10shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u10armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u10armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u10metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u10metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>MOBILE ANTI-AIR</span><small>DEFENSE</small></div><div class="unit-subtitle">AIR DEFENSE</div><div class="unit-index">UNIT // 10</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#c4a7ff"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u11metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u11armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u11glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u11wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u11glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u11shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u11shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u11armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u11armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u11metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u11metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>COMBAT ENGINEER</span><small>SUPPORT</small></div><div class="unit-subtitle">FIELD SUPPORT</div><div class="unit-index">UNIT // 11</div></article>
+<article class="arsenal-card reveal" style="--unit-accent:#ff8a52"><div class="arsenal-visual"><svg viewBox="0 0 240 120" role="img" aria-label="Highly detailed armored military vehicle illustration"><defs>
+<linearGradient id="u12metal" x1="0" y1="0" x2="0.2" y2="1"><stop stop-color="#e0e9eb"/><stop offset=".18" stop-color="#8ca2aa"/><stop offset=".42" stop-color="#425b66"/><stop offset=".67" stop-color="#1c303a"/><stop offset=".86" stop-color="#637780"/><stop offset="1" stop-color="#18262d"/></linearGradient>
+<linearGradient id="u12armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6b8a0"/><stop offset=".22" stop-color="#647b6b"/><stop offset=".55" stop-color="#354d44"/><stop offset=".82" stop-color="#24372f"/><stop offset="1" stop-color="#8a9a83"/></linearGradient>
+<linearGradient id="u12glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f8ff"/><stop offset=".25" stop-color="#4fa9c7"/><stop offset=".65" stop-color="#12384c"/><stop offset="1" stop-color="#06131d"/></linearGradient>
+<linearGradient id="u12wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8cbd0"/><stop offset=".35" stop-color="#637b88"/><stop offset=".68" stop-color="#334c5b"/><stop offset="1" stop-color="#192d3a"/></linearGradient>
+<radialGradient id="u12glow"><stop stop-color="#70d9ff" stop-opacity=".7"/><stop offset="1" stop-color="#70d9ff" stop-opacity="0"/></radialGradient>
+<filter id="u12shadow" x="-30%" y="-40%" width="160%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.2"/><feOffset dy="3"/><feComponentTransfer><feFuncA type="linear" slope=".8"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="120" cy="101" rx="94" ry="10" fill="#000" opacity=".5"/><ellipse cx="120" cy="99" rx="76" ry="4" fill="#64cfff" opacity=".08"/>
+<g filter="url(#u12shadow)">
+<path d="M23 72 39 49 182 47 211 69 204 91 34 94Z" fill="#101a1c" stroke="#8ea2a0" stroke-width="2"/>
+<path d="M31 73 45 55 178 53 200 71 196 85 37 88Z" fill="url(#u12armor)" stroke="#b0bca9" stroke-width="1.5"/>
+<path d="M39 58 53 53 178 52 192 63 183 68 42 68Z" fill="#b1bd9e" opacity=".48"/>
+<g><circle cx="49" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="49" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="49" cy="78" r="2" fill="#1b2827"/><path d="M49 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="70" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="70" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="70" cy="78" r="2" fill="#1b2827"/><path d="M70 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="91" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="91" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="91" cy="78" r="2" fill="#1b2827"/><path d="M91 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="112" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="112" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="112" cy="78" r="2" fill="#1b2827"/><path d="M112 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="133" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="133" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="133" cy="78" r="2" fill="#1b2827"/><path d="M133 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="154" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="154" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="154" cy="78" r="2" fill="#1b2827"/><path d="M154 69v18" stroke="#1d2927" stroke-width="1.5"/></g><g><circle cx="175" cy="78" r="10.5" fill="#10181a" stroke="#84948a" stroke-width="2"/><circle cx="175" cy="78" r="5.8" fill="#56655c" stroke="#b0b8a8" stroke-width="1"/><circle cx="175" cy="78" r="2" fill="#1b2827"/><path d="M175 69v18" stroke="#1d2927" stroke-width="1.5"/></g>
+<path d="M43 50 59 34 119 31 143 48 133 57 49 57Z" fill="url(#u12armor)" stroke="#c0c9b3" stroke-width="1.5"/>
+<path d="M57 37 75 33 112 33 127 44 67 46Z" fill="#9baa91" opacity=".45"/>
+<path d="M78 33 86 24 111 24 122 34Z" fill="url(#u12metal)" stroke="#c6d2cb" stroke-width="1.4"/>
+<path d="M101 25 160 17 165 22 113 36Z" fill="url(#u12metal)" stroke="#d0d8d7" stroke-width="1.4"/>
+<path d="M111 31 162 21" stroke="#e7eeee" stroke-width="1" opacity=".8"/>
+<path d="M159 18 173 16 176 20 164 24Z" fill="#a7b8b7"/>
+<path d="M68 48 77 41 95 42 103 48Z" fill="#d5e1d5" opacity=".25"/>
+<path d="M47 60 59 59 63 64 50 66Z" fill="#e3d6a3" opacity=".6"/>
+<g fill="#111b1c" stroke="#c0c8b5" stroke-width="1"><circle cx="56" cy="61" r="2"/><circle cx="80" cy="61" r="2"/><circle cx="105" cy="61" r="2"/><circle cx="130" cy="61" r="2"/><circle cx="154" cy="61" r="2"/><circle cx="178" cy="61" r="2"/></g>
+<path d="M29 72 41 68 42 84 31 84Z" fill="#b0c1b5"/><path d="M187 59 201 68 196 75 185 68Z" fill="#b4c4bc"/>
+<path d="M36 89H199" stroke="#d1d7c4" stroke-width="1" stroke-dasharray="5 3" opacity=".8"/>
+<path d="M54 49 62 45 67 48 61 53Z" fill="#ffbd64" opacity=".75"/>
+<g><path d="M89 32 82 14 86 11 95 31Z" fill="#b7c9ce" stroke="#e0e8e9"/><path d="M96 30 102 12 107 14 102 33Z" fill="#7f999f"/><path d="M83 14 85 7 89 13Z" fill="#ff9b5d"/><path d="M101 13 105 6 108 14Z" fill="#ff9b5d"/></g>
+
+</g>
+<g fill="#e1e8dd" opacity=".85"><circle cx="43" cy="58" r="1.3"/><circle cx="188" cy="57" r="1.3"/><circle cx="62" cy="36" r="1.1"/><circle cx="122" cy="45" r="1.1"/></g>
+<path d="M28 100H70" stroke="#5ccfff" stroke-width="1" opacity=".7"/><path d="M170 100H212" stroke="#5ccfff" stroke-width="1" opacity=".7"/>
+</svg></div><div class="arsenal-label"><span>HEAVY MISSILE UNIT</span><small>LONG RANGE</small></div><div class="unit-subtitle">PRECISION STRIKE</div><div class="unit-index">UNIT // 12</div></article></div>
+<div class="unit-footnote"><span class="status-dot"></span> TACTICAL VISUAL SYSTEM <span>•</span> 12 ASSET PROFILES <span>•</span> MOTION ENABLED</div>
+</div></section><section id="features"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Nega Waru Edition?</div><h2>STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.</h2></div><p>O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.</p></div><div class="features">
 <article class="feature reveal" style="--glow:#34b9ff"><div class="feature-top"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M10 18h4"/></svg></div><span class="index">01 / PLAY</span></div><h3>Mobil strategiya</h3><p>Generals uslubidagi katta janglarni mobil qurilmada his qilish uchun yaratilgan loyiha tajribasi.</p></article>
 <article class="feature reveal" style="--glow:#ff703a"><div class="feature-top"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 20 7v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><span class="index">02 / CONTROL</span></div><h3>Boshqaruv erkinligi</h3><p>Mobil ekran uchun moslashgan interfeys va taktik o‘yin jarayoniga e’tibor.</p></article>
 <article class="feature reveal" style="--glow:#a36cff"><div class="feature-top"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="index">03 / COMMUNITY</span></div><h3>Birga o‘ynaymiz</h3><p>Yangiliklar, yo‘riqnomalar va o‘yinchilar bilan muloqot uchun hamjamiyatga qo‘shiling.</p></article>
