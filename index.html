@@ -345,7 +345,7 @@ async function loadW3DFile(file){
   if(!Number.isFinite(size.x+size.y+size.z)||Math.max(size.x,size.y,size.z)<=0)throw new Error('Model geometriyasi bo‘sh yoki noto‘g‘ri.');
   // Center the asset and scale it to the viewer without distorting proportions.
   root.position.sub(center);root.scale.setScalar(3.25/Math.max(size.x,size.y,size.z));
-  scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material&&!Array.isArray(o.material))o.material.dispose()});
+  scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose()});
   model=root;scene.add(model);rotX=-.13;rotY=-.55;zoom=1;
   camera.position.set(5.5,3.2,7.2);camera.lookAt(0,0,0);
   document.getElementById('waru3d-counter').textContent='LOCAL W3D / '+meshes.length+' MESH'+(meshes.length===1?'':'ES');
