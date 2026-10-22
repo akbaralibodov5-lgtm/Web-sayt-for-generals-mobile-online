@@ -179,7 +179,7 @@ h1{font-size:clamp(66px,18vw,98px)}
 @media(max-width:480px){.waru3d-stage{min-height:350px}.waru3d-topline,.waru3d-bottomline{left:11px;right:11px;font-size:8px;letter-spacing:.09em}.waru3d-bottomline{bottom:54px}.waru3d-bottomline span:first-child{font-size:11px}.waru3d-controls{left:10px;bottom:10px}.waru3d-controls button{font-size:9px;padding:7px}.waru3d-unit{min-height:52px;padding:8px 9px;gap:7px}.waru3d-unittext b{font-size:10px}.waru3d-unittext small{font-size:8px}.waru3d-specs>div{padding:10px}.waru3d-specs b{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.waru3d-live,.waru3d-spinner{animation:none}}
 
-</style>
+.waru3d-asset-card{padding:22px 18px;border:1px solid rgba(128,228,255,.16);background:linear-gradient(145deg,rgba(18,37,51,.82),rgba(8,15,23,.9));border-radius:12px}.waru3d-asset-tag{font-size:9px;letter-spacing:.18em;color:#80e4ff;font-weight:800}.waru3d-asset-card h3{font-family:"Barlow Condensed",sans-serif;font-size:29px;line-height:1;margin:12px 0 10px;letter-spacing:.04em}.waru3d-asset-card p{font-size:11px;line-height:1.8;color:#a9bac9}.waru3d-asset-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:20px}.waru3d-asset-stats span{padding:10px 7px;border:1px solid rgba(173,196,222,.12);border-radius:8px}.waru3d-asset-stats b,.waru3d-asset-stats small{display:block}.waru3d-asset-stats b{font-size:15px;color:#f3f7fb}.waru3d-asset-stats small{font-size:8px;color:#8297aa;margin-top:5px;letter-spacing:.08em}</style>
 </head>
 <body>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
@@ -216,10 +216,9 @@ h1{font-size:clamp(66px,18vw,98px)}
 <canvas id="waru3d-canvas" aria-label="Interactive real-time 3D military vehicle viewer"></canvas>
 <div class="waru3d-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="waru3d-bottomline"><span id="waru3d-modelname">M1A2 ABRAMS</span><span>DRAG TO ROTATE · SCROLL TO ZOOM</span></div>
-<div class="waru3d-controls"><button id="waru3d-reset" type="button" aria-label="Reset camera">⟳ RESET VIEW</button><button id="waru3d-spin" type="button" aria-pressed="true">◉ AUTO ROTATE</button><button id="waru3d-load" type="button" title="Kompyuter yoki telefoningizdan original W3D modelini tanlang">＋ IMPORT ORIGINAL W3D</button><input id="waru3d-file" type="file" accept=".w3d,.W3D,application/octet-stream" hidden></div>
+<div class="waru3d-controls"><button id="waru3d-reset" type="button" aria-label="Reset camera">⟳ RESET VIEW</button><button id="waru3d-spin" type="button" aria-pressed="true">◉ AUTO ROTATE</button></div>
 </div>
-<aside class="waru3d-side"><div class="waru3d-sidehead"><span>ASSET SELECTOR</span><small>12 MODELS</small></div><div class="waru3d-units" id="waru3d-units">
-<button class="waru3d-unit is-active" type="button" data-unit="0" aria-pressed="true"><span class="waru3d-unitno">01</span><span class="waru3d-unittext"><b>CRUSADER TANK</b><small>USA / MAIN BATTLE TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="1" aria-pressed="false"><span class="waru3d-unitno">02</span><span class="waru3d-unittext"><b>PALADIN TANK</b><small>USA / LASER DEFENSE</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="2" aria-pressed="false"><span class="waru3d-unitno">03</span><span class="waru3d-unittext"><b>HUMVEE</b><small>USA / LIGHT RECON</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="3" aria-pressed="false"><span class="waru3d-unitno">04</span><span class="waru3d-unittext"><b>COMANCHE</b><small>USA / ATTACK HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="4" aria-pressed="false"><span class="waru3d-unitno">05</span><span class="waru3d-unittext"><b>RAPTOR</b><small>USA / AIR SUPERIORITY</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="5" aria-pressed="false"><span class="waru3d-unitno">06</span><span class="waru3d-unittext"><b>CHINOOK</b><small>USA / TRANSPORT HELICOPTER</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="6" aria-pressed="false"><span class="waru3d-unitno">07</span><span class="waru3d-unittext"><b>OVERLORD TANK</b><small>CHINA / HEAVY ARMOR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="7" aria-pressed="false"><span class="waru3d-unitno">08</span><span class="waru3d-unittext"><b>GATTLING TANK</b><small>CHINA / ANTI-AIR</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="8" aria-pressed="false"><span class="waru3d-unitno">09</span><span class="waru3d-unittext"><b>DRAGON TANK</b><small>CHINA / FLAME TANK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="9" aria-pressed="false"><span class="waru3d-unitno">10</span><span class="waru3d-unittext"><b>MIG FIGHTER</b><small>CHINA / STRIKE AIRCRAFT</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="10" aria-pressed="false"><span class="waru3d-unitno">11</span><span class="waru3d-unittext"><b>TECHNICAL</b><small>GLA / FAST ATTACK</small></span><span class="waru3d-unitarrow">↗</span></button><button class="waru3d-unit" type="button" data-unit="11" aria-pressed="false"><span class="waru3d-unitno">12</span><span class="waru3d-unittext"><b>SCUD LAUNCHER</b><small>GLA / ROCKET ARTILLERY</small></span><span class="waru3d-unitarrow">↗</span></button></div><div class="waru3d-sidefoot"><span class="waru3d-live"></span> INTERACTIVE 3D ASSET DATABASE<br><small id="waru3d-import-status" style="display:block;margin-top:8px;line-height:1.6;letter-spacing:.04em;color:#9bb8c7">Original W3D import: faylni qurilmangizdan tanlang. Fayl serverga yuborilmaydi; model shu brauzerda ochiladi.</small></div></aside>
+<aside class="waru3d-side"><div class="waru3d-sidehead"><span>LIVE 3D ASSET</span><small>CC0 · AUTO LOAD</small></div><div class="waru3d-asset-card"><div class="waru3d-asset-tag">OPEN SOURCE MODEL</div><h3>ARMOURED COLUMN</h3><p>Tank, zirhli transportyorlar, ta’minot mashinalari va dala istehkomlari bir sahnada.</p><div class="waru3d-asset-stats"><span><b>15.6K</b><small>TRIANGLES</small></span><span><b>74</b><small>ASSETS IN PACK</small></span><span><b>CC0</b><small>LICENSE</small></span></div><small id="waru3d-import-status" style="display:block;margin-top:18px;line-height:1.6;letter-spacing:.04em;color:#9bb8c7">3D model yuklanmoqda…</small><p style="font-size:10px;line-height:1.7;color:#71869a">Eslatma: bu Generals’ning aynan original modeli emas, balki bepul foydalanish mumkin bo‘lgan umumiy harbiy 3D sahna.</p><a href="https://3dassets.dev/packs/armoured-column-and-field-camp" target="_blank" rel="noopener noreferrer" style="color:#80e4ff;font-size:10px;font-weight:800;letter-spacing:.08em">MODEL MANBAI ↗</a></div></aside>
 </div>
 <div class="waru3d-specs"><div><small>RENDER MODE</small><b>REAL-TIME WEBGL</b></div><div><small>SURFACE DETAIL</small><b>PBR-STYLE METALS</b></div><div><small>VIEW CONTROL</small><b>ROTATE · ZOOM · RESET</b></div><div><small>ANIMATION</small><b>LIVE MECHANICAL MOTION</b></div></div>
 </div></section><section id="features"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Nega Waru Edition?</div><h2>STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.</h2></div><p>O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.</p></div><div class="features">
@@ -243,6 +242,7 @@ const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.d
 
 <script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/loaders/GLTFLoader.js';
 (()=>{
 const canvas=document.getElementById('waru3d-canvas'),stage=document.getElementById('waru3d-stage'),loading=document.getElementById('waru3d-loading');
 if(!canvas||!stage)return;
@@ -368,12 +368,31 @@ const grid=new THREE.GridHelper(32,48,0x35708a,0x234355);grid.position.y=-.085;g
 const ring=mesh(scene,new THREE.TorusGeometry(2.55,.012,8,100),mat('ring',0x4aa7c9,.38,.4,{emissive:0x1b6684,emissiveIntensity:.45}),[0,-.06,0]);ring.rotation.x=Math.PI/2;
 for(let i=0;i<48;i++){const a=i/48*Math.PI*2;const p=mesh(scene,new THREE.BoxGeometry(.07,.012,.16),steelDark,[Math.cos(a)*2.55,-.05,Math.sin(a)*2.55]);p.rotation.y=-a;}
 model=makeUnit(0);scene.add(model);
+const assetStatus=document.getElementById('waru3d-import-status');
+const gltfLoader=new GLTFLoader();
+gltfLoader.load('https://cdn.3dassets.dev/assets/23739/v1/model.glb',gltf=>{
+ const asset=gltf.scene;
+ asset.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true}});
+ const bounds=new THREE.Box3().setFromObject(asset),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+ if(!Number.isFinite(size.x+size.y+size.z)||Math.max(size.x,size.y,size.z)<=0){if(assetStatus)assetStatus.textContent='Model geometriyasi noto‘g‘ri; demo model ko‘rsatilmoqda.';return}
+ asset.position.sub(center);
+ asset.scale.setScalar(4.2/Math.max(size.x,size.y,size.z));
+ scene.remove(model);
+ model.traverse(o=>{if(o.geometry)o.geometry.dispose()});
+ model=asset;scene.add(model);
+ rotX=-.18;rotY=-.55;zoom=1;
+ camera.position.set(5.8,4.2,7.8);camera.lookAt(0,0,0);
+ document.getElementById('waru3d-modelname').textContent='ARMOURED COLUMN · CC0';
+ document.getElementById('waru3d-counter').textContent='OPEN SOURCE ASSET';
+ if(assetStatus)assetStatus.textContent='Tayyor — 3D model avtomatik yuklandi.';
+},undefined,error=>{
+ console.error('CC0 GLB failed to load',error);
+ if(assetStatus)assetStatus.textContent='Internetdagi 3D model yuklanmadi. Internetni tekshirib sahifani yangilang.';
+});
 function fit(){if(!renderer||!camera)return;const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
 new ResizeObserver(fit).observe(stage);
 function select(i){active=i;const next=makeUnit(i);scene.remove(model);model.traverse(o=>{if(o.geometry)o.geometry.dispose()});model=next;scene.add(model);rotY=-.55;rotX=-.13;zoom=1;model.rotation.set(rotX,rotY,0);camera.position.set(5.5/zoom,3.2/zoom,7.2/zoom);camera.lookAt(0,.4,0);document.getElementById('waru3d-counter').textContent='ASSET '+String(i+1).padStart(2,'0')+' / 12';document.getElementById('waru3d-modelname').textContent=names[i];document.querySelectorAll('.waru3d-unit').forEach((b,j)=>{b.classList.toggle('is-active',j===i);b.setAttribute('aria-pressed',j===i?'true':'false')})}
-document.getElementById('waru3d-units').addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b)select(Number(b.dataset.unit))});
-document.getElementById('waru3d-load').addEventListener('click',()=>document.getElementById('waru3d-file').click());
-document.getElementById('waru3d-file').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)loadW3DFile(f);e.target.value=''});
+
 document.getElementById('waru3d-reset').addEventListener('click',()=>{rotX=-.13;rotY=-.55;zoom=1;camera.position.set(5.5,3.2,7.2);camera.lookAt(0,.4,0)});
 document.getElementById('waru3d-spin').addEventListener('click',e=>{autoRotate=!autoRotate;e.currentTarget.setAttribute('aria-pressed',String(autoRotate));e.currentTarget.textContent=autoRotate?'◉ AUTO ROTATE':'○ AUTO ROTATE'});
 canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing'});
