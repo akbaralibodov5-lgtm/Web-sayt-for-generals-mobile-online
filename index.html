@@ -139,6 +139,37 @@ h1{font-size:clamp(66px,18vw,98px)}
 @media(prefers-reduced-motion:reduce){.arsenal-card,.arsenal-card svg,.status-dot{animation:none!important;transition:none!important}}
 
 
+
+/* WARU cinematic polish + live theme/language controls */
+:root{--accent2:#ff7c4d;--surface-glass:rgba(13,23,35,.76)}
+.lang-select,.palette-toggle{height:40px;border:1px solid var(--line);background:linear-gradient(135deg,#101c2a,#080f18);color:var(--text);border-radius:9px;cursor:pointer}
+.lang-select{padding:0 10px;font-size:11px;font-weight:800;letter-spacing:.1em;outline:none}
+.palette-toggle{display:flex;align-items:center;gap:3px;padding:0 9px}
+.palette-toggle span{width:7px;height:18px;border-radius:5px;background:var(--blue);box-shadow:0 0 9px color-mix(in srgb,var(--blue),transparent 55%)}
+.palette-toggle span:nth-child(2){background:var(--orange)}.palette-toggle span:nth-child(3){background:var(--green)}
+.palette-toggle:hover,.lang-select:hover{border-color:var(--blue);box-shadow:0 0 18px color-mix(in srgb,var(--blue),transparent 82%)}
+body{background-image:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--blue),transparent 92%),transparent 42%)}
+.hero:before{transform:scale(1.015);animation:heroDrift 28s ease-in-out infinite alternate}
+.hero-content{animation:heroEnter .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-art{animation:artEnter 1.2s .1s cubic-bezier(.2,.8,.2,1) both}
+.feature,.community-card,.download-panel,.showcase-visual{box-shadow:0 18px 60px #0002;backdrop-filter:blur(8px)}
+.feature:before,.community-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ffffff08 45%,transparent 70%);transform:translateX(-110%);transition:transform .8s}
+.feature:hover:before,.community-card:hover:before{transform:translateX(110%)}
+.feature{isolation:isolate}.feature-icon{box-shadow:inset 0 1px #ffffff12,0 0 25px color-mix(in srgb,var(--blue),transparent 90%)}
+.eyebrow{letter-spacing:.27em}.section-head h2{text-shadow:0 4px 32px #0008}
+.reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),filter .7s}
+.reveal:not(.visible){filter:blur(3px)}
+@keyframes heroDrift{from{transform:scale(1.015) translateX(-.5%)}to{transform:scale(1.06) translateX(.5%)}}
+@keyframes heroEnter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes artEnter{from{opacity:0;transform:translateX(22px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}
+body[data-palette="crimson"]{--blue:#ff5268;--cyan:#ffc0c9;--orange:#ff9a4d;--green:#ffd37c;--line:rgba(255,151,161,.19)}
+body[data-palette="emerald"]{--blue:#5ce0a2;--cyan:#b8ffe0;--orange:#e9bb62;--green:#a4ff8d;--line:rgba(110,224,171,.19)}
+body[data-palette="violet"]{--blue:#a78bfa;--cyan:#ddd2ff;--orange:#ff8bb4;--green:#a9f5d0;--line:rgba(179,157,255,.2)}
+body[data-palette="desert"]{--blue:#e5b66b;--cyan:#ffe4b4;--orange:#e9784e;--green:#b8d58a;--line:rgba(229,182,107,.2)}
+body[data-palette="ice"]{--blue:#51c4ff;--cyan:#c9f4ff;--orange:#ff7c4d;--green:#b9f58a}
+@media(max-width:700px){.nav-actions{gap:7px}.lang-select{height:36px;padding:0 7px}.palette-toggle{height:36px;padding:0 7px}.palette-toggle span{height:15px;width:6px}.nav-actions .btn{display:none!important}}
+@media(prefers-reduced-motion:reduce){.hero:before,.hero-content,.hero-art{animation:none!important}.reveal{filter:none!important}}
+
 </style>
 </head>
 <body>
@@ -147,7 +178,7 @@ h1{font-size:clamp(66px,18vw,98px)}
 <header><div class="wrap nav">
 <a class="brand" href="#top" aria-label="Waru Edition bosh sahifa"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 28 8v13l-12 9L4 21V8L16 2Z" stroke="#8fe4ff" stroke-width="1.5"/><path d="m9 10 4 12 3-7 3 7 4-12" stroke="#e9f8ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>WARU EDITION<small>GENERALS MOBILE ONLINE</small></span></a>
 <nav class="navlinks" id="navlinks"><a href="#features">Imkoniyatlar</a><a href="#about">Loyiha haqida</a><a href="#download">Yuklab olish</a><a href="#community">Hamjamiyat</a></nav>
-<div class="nav-actions"><span class="lang">UZ / EN</span><a class="btn btn-primary" href="#arsenal">Kashf etish <span>↗</span></a><button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false">☰</button></div>
+<div class="nav-actions"><select class="lang-select" id="languageSelect" aria-label="Language" title="Language"><option value="uz">UZ</option><option value="ru">RU</option><option value="en">EN</option></select><button class="palette-toggle" id="paletteToggle" type="button" aria-label="Rangni almashtirish" title="Rangni almashtirish"><span></span><span></span><span></span></button><a class="btn btn-primary" href="#arsenal">Kashf etish <span>↗</span></a><button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false">☰</button></div>
 </div></header>
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
@@ -183,6 +214,83 @@ const menuToggle=document.getElementById('menuToggle');const navlinks=document.g
 // Reading progress indicator — lightweight and mobile-friendly.
 const readingProgress=document.getElementById('readingProgress');
 const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};window.addEventListener('scroll',updateReadingProgress,{passive:true});updateReadingProgress();
+
+/* Language switcher: Uzbek, Russian and English */
+const languageSelect=document.getElementById('languageSelect');
+const translations={
+uz:{
+nav:['Imkoniyatlar','Loyiha haqida','Yuklab olish','Hamjamiyat','Kashf etish'],
+heroEyebrow:'Strategiya yangi darajada',heroCopy:'Sevimli real-time strategiya olamiga mobil qurilmangizdan qayting. Waru Edition — Generals ruhidagi janglar, qulay boshqaruv va o‘yinchilar hamjamiyati uchun yaratilgan loyiha.',
+heroButton:'↓ &nbsp; Jang maydonini ko‘rish',aboutButton:'Loyiha haqida ↗',stats:['Real-time strategiya','Mobil tajriba','Community edition'],scroll:'Pastga aylantiring',
+ticker:'WARU EDITION • LOYIHA SAHIFASI',tickerNote:'Generals ruhi. Mobil platforma. <b>Bir strategiya hamjamiyati.</b>',
+ops:['Teatr','Real-time strategy','Platforma','Android / Mobile','Missiya','Waru Edition community'],
+arsenalEyebrow:'WARU EDITION / COMMAND CENTER',arsenalTitle:'STRATEGIYA.<br><span>HARAKATDA.</span>',arsenalCopy:'Waru Edition yangiliklari, mobil Generals loyihasi va hamjamiyatga oid ma’lumotlar bir joyda.',
+arsenalCards:[['Waru Edition','Generals tajribasini mobil platformada rivojlantirishga qaratilgan loyiha.'],['Loyiha yangiliklari','Yangilanishlar, texnik o‘zgarishlar va yangi imkoniyatlar haqidagi ma’lumotlar.'],['Hamjamiyat','O‘yinchilar bilan bog‘lanish, tajriba almashish va loyiha rivojiga hissa qo‘shish.']],
+featuresEyebrow:'Nega Waru Edition?',featuresTitle:'STRATEGIYA.<br><span>NAZORAT.</span> TAJRIBA.',featuresCopy:'O‘yinchi uchun muhim bo‘lgan narsalar — qulay boshqaruv, loyiha yangiliklari va hamjamiyat bilan bir joyda.',
+featuresCards:[['Mobil strategiya','Generals uslubidagi katta janglarni mobil qurilmada his qilish uchun yaratilgan loyiha tajribasi.'],['Boshqaruv erkinligi','Mobil ekran uchun moslashgan interfeys va taktik o‘yin jarayoniga e’tibor.'],['Birga o‘ynaymiz','Yangiliklar, yo‘riqnomalar va o‘yinchilar bilan muloqot uchun hamjamiyatga qo‘shiling.']],
+aboutEyebrow:'Loyiha haqida',aboutTitle:'BU FAQAT<br>O‘YIN EMAS.<br><span>BU — MISSIYA.</span>',aboutCopy:'Waru Edition — Generals Mobile Online atrofida shakllanayotgan loyiha va o‘yinchilar uchun maxsus tayyorlangan sahifa. Bu yerda loyihaning asosiy ma’lumotlari, yuklab olish manbalari va hamjamiyat havolalari jamlanadi.',
+checks:[['Yangiliklar va relizlar','Rasmiy manbalardagi so‘nggi ma’lumotlarga yo‘l.'],['Mobil o‘yinchilar uchun','Qurilmangizdan qulay ko‘rish uchun moslashuvchan dizayn.'],['Hamjamiyat bir joyda','Telegram orqali qo‘llab-quvvatlash va yangiliklar.']],
+downloadEyebrow:'Keyingi qadam',downloadTitle:'MISSIYAGA<br><span>QO‘SHILING.</span>',downloadCopy:'Yuklab olish va o‘rnatishdan oldin loyiha tomonidan berilgan eng so‘nggi ko‘rsatmalarni tekshiring.',downloadLabel:'Rasmiy havolalar bo‘limi',downloadTitle2:'Waru Edition bilan tanishing',downloadText:'Waru Edition yangiliklari, o‘yin bo‘yicha yo‘riqnomalar va yangilanish e’lonlarini hamjamiyat kanalidan kuzating.',
+communityEyebrow:'Biz bilan aloqada',communityTitle:'HAMJAMIYATGA<br><span>QO‘SHIL.</span>',communityCopy:'Yangi relizlar, maslahatlar va o‘yin haqidagi suhbatlarni kuzatib boring.',communityCards:[['Telegram kanal','Yangiliklar, fayllar va loyiha e’lonlari.'],['O‘yinchilar hamjamiyati','Savollar, yordam va boshqa o‘yinchilar bilan aloqa.']],
+footer:['Imkoniyatlar','Havolalar','Aloqa']
+},
+ru:{
+nav:['Возможности','О проекте','Скачать','Сообщество','Открыть'],
+heroEyebrow:'Стратегия на новом уровне',heroCopy:'Вернитесь в любимый мир стратегий в реальном времени на мобильном устройстве. Waru Edition — проект для сражений в духе Generals, удобного управления и сообщества игроков.',
+heroButton:'↓ &nbsp; На поле боя',aboutButton:'О проекте ↗',stats:['Стратегия в реальном времени','Мобильный опыт','Сообщество'],scroll:'Прокрутите вниз',
+ticker:'WARU EDITION • СТРАНИЦА ПРОЕКТА',tickerNote:'Дух Generals. Мобильная платформа. <b>Одно стратегическое сообщество.</b>',
+ops:['Жанр','Стратегия в реальном времени','Платформа','Android / Mobile','Миссия','Сообщество Waru Edition'],
+arsenalEyebrow:'WARU EDITION / ЦЕНТР УПРАВЛЕНИЯ',arsenalTitle:'СТРАТЕГИЯ.<br><span>В ДЕЙСТВИИ.</span>',arsenalCopy:'Новости Waru Edition, мобильный проект Generals и информация о сообществе — в одном месте.',
+arsenalCards:[['Waru Edition','Проект по развитию опыта Generals на мобильных устройствах.'],['Новости проекта','Обновления, технические изменения и новые возможности.'],['Сообщество','Общайтесь с игроками, делитесь опытом и помогайте проекту развиваться.']],
+featuresEyebrow:'Почему Waru Edition?',featuresTitle:'СТРАТЕГИЯ.<br><span>КОНТРОЛЬ.</span> ОПЫТ.',featuresCopy:'Всё важное для игрока в одном месте: удобное управление, новости проекта и сообщество.',
+featuresCards:[['Мобильная стратегия','Проект для погружения в масштабные сражения в стиле Generals на мобильном устройстве.'],['Свобода управления','Интерфейс для мобильного экрана и внимание к тактическому игровому процессу.'],['Играем вместе','Присоединяйтесь к сообществу ради новостей, инструкций и общения.']],
+aboutEyebrow:'О проекте',aboutTitle:'ЭТО НЕ ПРОСТО<br>ИГРА.<br><span>ЭТО — МИССИЯ.</span>',aboutCopy:'Waru Edition — страница проекта и игроков вокруг Generals Mobile Online. Здесь собраны сведения о проекте, полезные ссылки и каналы сообщества.',
+checks:[['Новости и релизы','Переход к последним публикациям официальных источников.'],['Для мобильных игроков','Адаптивный дизайн для удобного просмотра на телефоне.'],['Сообщество в одном месте','Поддержка и новости через Telegram.']],
+downloadEyebrow:'Следующий шаг',downloadTitle:'ПРИСОЕДИНЯЙТЕСЬ<br><span>К МИССИИ.</span>',downloadCopy:'Перед скачиванием и установкой ознакомьтесь с последними инструкциями проекта.',downloadLabel:'Официальные ссылки',downloadTitle2:'Откройте для себя Waru Edition',downloadText:'Следите за новостями, инструкциями и обновлениями Waru Edition в канале сообщества.',
+communityEyebrow:'Оставайтесь на связи',communityTitle:'ПРИСОЕДИНЯЙТЕСЬ<br><span>К СООБЩЕСТВУ.</span>',communityCopy:'Следите за новыми релизами, советами и обсуждениями игры.',communityCards:[['Telegram-канал','Новости, файлы и объявления проекта.'],['Сообщество игроков','Вопросы, помощь и общение с другими игроками.']],
+footer:['Возможности','Ссылки','Контакты']
+},
+en:{
+nav:['Features','About','Downloads','Community','Explore'],
+heroEyebrow:'Strategy at a new level',heroCopy:'Return to your favorite real-time strategy world on mobile. Waru Edition is a community project inspired by Generals, focused on battles, comfortable controls and players.',
+heroButton:'↓ &nbsp; Enter the battlefield',aboutButton:'About the project ↗',stats:['Real-time strategy','Mobile experience','Community edition'],scroll:'Scroll to explore',
+ticker:'WARU EDITION • PROJECT HUB',tickerNote:'The spirit of Generals. A mobile platform. <b>One strategy community.</b>',
+ops:['Genre','Real-time strategy','Platform','Android / Mobile','Mission','Waru Edition community'],
+arsenalEyebrow:'WARU EDITION / COMMAND CENTER',arsenalTitle:'STRATEGY.<br><span>IN MOTION.</span>',arsenalCopy:'Waru Edition news, the mobile Generals project and community information — all in one place.',
+arsenalCards:[['Waru Edition','A project focused on bringing the Generals experience forward on mobile.'],['Project updates','Updates, technical changes and information about new features.'],['Community','Connect with players, share experience and help the project grow.']],
+featuresEyebrow:'Why Waru Edition?',featuresTitle:'STRATEGY.<br><span>CONTROL.</span> EXPERIENCE.',featuresCopy:'What matters to players in one place: comfortable controls, project news and community.',
+featuresCards:[['Mobile strategy','A project experience for enjoying large Generals-style battles on mobile.'],['Control your way','A mobile-friendly interface built around tactical gameplay.'],['Play together','Join the community for news, guides and conversations with players.']],
+aboutEyebrow:'About the project',aboutTitle:'MORE THAN<br>A GAME.<br><span>IT’S A MISSION.</span>',aboutCopy:'Waru Edition is a hub for the project and players around Generals Mobile Online. Find project information, useful links and community channels here.',
+checks:[['News & releases','Find the latest information from project sources.'],['Made for mobile players','A responsive layout designed for comfortable viewing on your device.'],['Community in one place','Support and updates through Telegram.']],
+downloadEyebrow:'Next step',downloadTitle:'JOIN THE<br><span>MISSION.</span>',downloadCopy:'Check the latest project instructions before downloading or installing anything.',downloadLabel:'Official links',downloadTitle2:'Discover Waru Edition',downloadText:'Follow Waru Edition news, game guides and update announcements through the community channel.',
+communityEyebrow:'Stay connected',communityTitle:'JOIN THE<br><span>COMMUNITY.</span>',communityCopy:'Keep up with releases, tips and conversations about the game.',communityCards:[['Telegram channel','News, files and project announcements.'],['Player community','Questions, help and a place to connect with other players.']],
+footer:['Features','Links','Contact']
+}};
+function applyLanguage(code){
+ const t=translations[code]||translations.uz;document.documentElement.lang=code;
+ const set=(sel,val)=>{const el=document.querySelector(sel);if(el&&val!==undefined)el.innerHTML=val};
+ const setAll=(sel,vals)=>document.querySelectorAll(sel).forEach((el,i)=>{if(vals[i]!==undefined)el.innerHTML=vals[i]});
+ setAll('#navlinks a',t.nav.slice(0,4));set('.nav-actions .btn',t.nav[4]+' <span>↗</span>');
+ set('.hero-content .eyebrow',t.heroEyebrow);set('.hero-copy',t.heroCopy);
+ setAll('.hero-buttons .btn',[t.heroButton,t.aboutButton]);setAll('.microstat span',t.stats);set('.scroll-note',t.scroll);
+ set('.ticker .status','<span class="dot"></span> '+t.ticker);set('.ticker-note',t.tickerNote);
+ setAll('.ops-cell small',[t.ops[0],t.ops[2],t.ops[4]]);setAll('.ops-cell strong',[t.ops[1],t.ops[3],t.ops[5]]);
+ const sections=document.querySelectorAll('.arsenal-section,#features,#about,#download,#community');
+ if(sections[0]){set('.arsenal-section .eyebrow',t.arsenalEyebrow);set('.arsenal-section .section-head h2',t.arsenalTitle);set('.arsenal-section .section-head p',t.arsenalCopy);setAll('.arsenal-section .feature h3',t.arsenalCards.map(x=>x[0]));setAll('.arsenal-section .feature p',t.arsenalCards.map(x=>x[1]));}
+ set('#features .eyebrow',t.featuresEyebrow);set('#features .section-head h2',t.featuresTitle);set('#features .section-head p',t.featuresCopy);setAll('#features .feature h3',t.featuresCards.map(x=>x[0]));setAll('#features .feature p',t.featuresCards.map(x=>x[1]));
+ set('#about .showcase-copy .eyebrow',t.aboutEyebrow);set('#about .showcase-copy h2',t.aboutTitle);set('#about .showcase-copy > p',t.aboutCopy);setAll('#about .check b',t.checks.map(x=>x[0]));setAll('#about .check span:not(.checkmark)',t.checks.map(x=>'<b>'+x[0]+'</b><br>'+x[1]));
+ set('#download .eyebrow',t.downloadEyebrow);set('#download .section-head h2',t.downloadTitle);set('#download .section-head p',t.downloadCopy);set('#download .version',t.downloadLabel);set('#download h3',t.downloadTitle2);set('#download .download-panel p',t.downloadText);
+ set('#community .eyebrow',t.communityEyebrow);set('#community .section-head h2',t.communityTitle);set('#community .section-head p',t.communityCopy);setAll('.community-card h3',t.communityCards.map(x=>x[0]));setAll('.community-card p',t.communityCards.map(x=>x[1]));
+ setAll('.footer-links a',t.footer);try{localStorage.setItem('waru-language',code)}catch(e){}
+}
+languageSelect.addEventListener('change',()=>applyLanguage(languageSelect.value));
+try{const savedLanguage=localStorage.getItem('waru-language');if(savedLanguage&&translations[savedLanguage])languageSelect.value=savedLanguage;}catch(e){}
+applyLanguage(languageSelect.value||'uz');
+/* Accent palette cycles without reloading */
+const paletteToggle=document.getElementById('paletteToggle');const palettes=['ice','crimson','emerald','violet','desert'];let paletteIndex=0;
+try{const savedPalette=localStorage.getItem('waru-palette');if(savedPalette&&palettes.includes(savedPalette)){paletteIndex=palettes.indexOf(savedPalette);document.body.dataset.palette=savedPalette;}}catch(e){}
+paletteToggle.addEventListener('click',()=>{paletteIndex=(paletteIndex+1)%palettes.length;document.body.dataset.palette=palettes[paletteIndex];try{localStorage.setItem('waru-palette',palettes[paletteIndex])}catch(e){}});
+
 </script>
 
 
