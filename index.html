@@ -332,6 +332,33 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 
+
+/* FIX: prevent long localized hero headline from overflowing on mobile */
+@media(max-width:640px){
+ .hero,.hero-grid,.hero-content{width:100%;min-width:0;max-width:100%}
+ .hero-grid{grid-template-columns:minmax(0,1fr);overflow:visible}
+ .hero-content{overflow-wrap:break-word;word-break:normal}
+ .hero-content h1{width:100%;max-width:100%;font-size:clamp(43px,11.5vw,72px)!important;line-height:.94!important;letter-spacing:-.045em!important;overflow-wrap:anywhere;word-break:normal;margin:22px 0 22px}
+ .hero-content h1 span,.hero-content h1 em{display:block;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .hero-copy{max-width:100%;overflow-wrap:break-word;font-size:clamp(12px,3.5vw,14px)}
+ .hero-buttons{display:flex;flex-wrap:wrap;max-width:100%}
+ .hero-buttons .btn{max-width:100%;white-space:normal}
+ .microstats{max-width:100%;gap:clamp(10px,4vw,22px)}
+ .microstat{min-width:0}
+ .microstat span{overflow-wrap:anywhere}
+ .hero-art{width:100%;min-width:0;max-width:100%;min-height:clamp(230px,68vw,340px)}
+ .radar{max-width:88vw}
+ .vehicle{max-width:88%;height:auto}
+ .art-coordinate{max-width:48%;overflow-wrap:anywhere}
+ .scroll-note{position:relative;bottom:auto;left:auto;transform:none;justify-content:center;margin:12px auto 0}
+}
+@media(max-width:380px){
+ .hero-content h1{font-size:clamp(38px,10.7vw,48px)!important;letter-spacing:-.05em!important;line-height:.98!important}
+ .hero-content .eyebrow{letter-spacing:.1em;font-size:8px}
+ .hero-buttons .btn{flex:1 1 100%;justify-content:center}
+ .microstat span{font-size:6.5px}
+}
+
 </style>
 </head>
 <body>
