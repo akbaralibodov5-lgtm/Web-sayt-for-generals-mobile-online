@@ -388,6 +388,12 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 .download-apk .download-arrow{font-size:21px;margin-left:5px}
 .download-apk:hover{transform:translateY(-2px);box-shadow:0 12px 34px #168bd555;filter:brightness(1.08)}
 @media(max-width:700px){.download-actions{justify-content:stretch;align-items:stretch}.download-actions .btn{justify-content:center}.download-apk{width:100%;min-height:68px}.download-actions .btn-ghost{width:100%}}
+
+/* Playful blanket over the player-community lightning icon */
+.community-covered{position:relative;overflow:hidden}
+.community-covered .blanket{position:absolute;inset:0 0 12px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 12px 12px;background:linear-gradient(145deg,#f4d9a0 0%,#d9b878 42%,#b58d54 100%);color:#8c653a;font-size:30px;font-weight:900;letter-spacing:-.12em;line-height:1;box-shadow:inset 0 2px 0 #fff6,inset 0 -5px 0 #8c653a24,0 5px 10px #0003;transform:rotate(-5deg);border:1px solid #ffe5b1}
+.community-covered .blanket:after{content:"Z z";position:absolute;right:8px;top:6px;color:#fff4d6;font:700 11px/1.2 'Barlow Condensed',sans-serif;letter-spacing:.04em;transform:rotate(12deg)}
+.community-covered .arrow{z-index:2}
 </style>
 </head>
 <body>
@@ -429,7 +435,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 </a>
 <a class="btn btn-ghost" href="https://t.me/generalsmobile1" target="_blank" rel="noopener">Telegram ↗</a>
 </div></div></div></section>
-<section id="community"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Biz bilan aloqada</div><h2>HAMJAMIYATGA<br><span>QO‘SHIL.</span></h2></div><p>Yangi relizlar, maslahatlar va o‘yin haqidagi suhbatlarni kuzatib boring.</p></div><div class="community"><a class="community-card reveal" href="https://t.me/generalsmobile1" target="_blank" rel="noopener"><div><h3>Telegram kanal</h3><p>Yangiliklar, fayllar va loyiha e’lonlari.</p></div><div class="community-icon">➤<span class="arrow">↗</span></div></a><a class="community-card reveal" href="https://t.me/generalstelefon" target="_blank" rel="noopener"><div><h3>O‘yinchilar hamjamiyati</h3><p>Savollar, yordam va boshqa o‘yinchilar bilan aloqa.</p></div><div class="community-icon">⌁<span class="arrow">↗</span></div></a></div></div></section>
+<section id="community"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Biz bilan aloqada</div><h2>HAMJAMIYATGA<br><span>QO‘SHIL.</span></h2></div><p>Yangi relizlar, maslahatlar va o‘yin haqidagi suhbatlarni kuzatib boring.</p></div><div class="community"><a class="community-card reveal" href="https://t.me/generalsmobile1" target="_blank" rel="noopener"><div><h3>Telegram kanal</h3><p>Yangiliklar, fayllar va loyiha e’lonlari.</p></div><div class="community-icon">➤<span class="arrow">↗</span></div></a><a class="community-card reveal" href="https://t.me/generalstelefon" target="_blank" rel="noopener"><div><h3>O‘yinchilar hamjamiyati</h3><p>Savollar, yordam va boshqa o‘yinchilar bilan aloqa.</p></div><div class="community-icon community-covered" aria-label="Yopilgan chaqmoqcha"><span class="blanket" aria-hidden="true">〰</span><span class="arrow">↗</span></div></a></div></div></section>
 </main>
 <footer><div class="wrap footer-row"><a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2 28 8v13l-12 9L4 21V8L16 2Z" stroke="#8fe4ff" stroke-width="1.5"/><path d="m9 10 4 12 3-7 3 7 4-12" stroke="#e9f8ff" stroke-width="2.2" stroke-linecap="round"/></svg></span><span>WARU EDITION<small>GENERALS MOBILE ONLINE</small></span></a><div class="footer-copy">© <span id="year"></span> WARU EDITION. Mustaqil fan-loyiha sahifasi.<br>Generals nomi va tegishli savdo belgilarining huquqlari ularning egalariga tegishli.</div><div class="footer-links"><a href="#features">Imkoniyatlar</a><a href="#download">Havolalar</a><a href="#community">Aloqa</a></div></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
