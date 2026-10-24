@@ -395,7 +395,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 .community-cat .arrow{z-index:2;position:absolute;right:7px;bottom:7px;color:#ffcf76}
 
 .community-cat{position:relative;overflow:hidden;display:grid;place-items:center}
-.community-cat .cat-picture{display:block;width:100%;height:100%;object-fit:cover;border-radius:7px}
+.community-cat .cat-picture{display:block;width:100%;height:100%;object-fit:contain;border-radius:7px;padding:2px;filter:drop-shadow(0 3px 7px #0006)}
 .community-cat .arrow{z-index:2;position:absolute;right:7px;bottom:7px;color:#ffcf76;text-shadow:0 1px 5px #06111d}
 </style>
 </head>
@@ -438,8 +438,30 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 </a>
 <a class="btn btn-ghost" href="https://t.me/generalsmobile1" target="_blank" rel="noopener">Telegram ↗</a>
 </div></div></div></section>
-<section id="community"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Biz bilan aloqada</div><h2>HAMJAMIYATGA<br><span>QO‘SHIL.</span></h2></div><p>Yangi relizlar, maslahatlar va o‘yin haqidagi suhbatlarni kuzatib boring.</p></div><div class="community"><a class="community-card reveal" href="https://t.me/generalsmobile1" target="_blank" rel="noopener"><div><h3>Telegram kanal</h3><p>Yangiliklar, fayllar va loyiha e’lonlari.</p></div><div class="community-icon">➤<span class="arrow">↗</span></div></a><a class="community-card reveal" href="https://t.me/generalstelefon" target="_blank" rel="noopener"><div><h3>O‘yinchilar hamjamiyati</h3><p>Savollar, yordam va boshqa o‘yinchilar bilan aloqa.</p></div><div class="community-icon community-cat" aria-label="Mushukcha rasmi">
-<img class="cat-picture" src="https://raw.githubusercontent.com/akbaralibodov5-lgtm/Web-sayt-for-generals-mobile-online/gh-pages/assets/community-cat.png" alt="Mushukcha" loading="lazy">
+<section id="community"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Biz bilan aloqada</div><h2>HAMJAMIYATGA<br><span>QO‘SHIL.</span></h2></div><p>Yangi relizlar, maslahatlar va o‘yin haqidagi suhbatlarni kuzatib boring.</p></div><div class="community"><a class="community-card reveal" href="https://t.me/generalsmobile1" target="_blank" rel="noopener"><div><h3>Telegram kanal</h3><p>Yangiliklar, fayllar va loyiha e’lonlari.</p></div><div class="community-icon">➤<span class="arrow">↗</span></div></a><a class="community-card reveal" href="https://t.me/generalstelefon" target="_blank" rel="noopener"><div><h3>O‘yinchilar hamjamiyati</h3><p>Savollar, yordam va boshqa o‘yinchilar bilan aloqa.</p></div><div class="community-icon community-cat" aria-label="Mushukchali rasm">
+<svg class="cat-picture" viewBox="0 0 100 100" role="img" aria-label="Ko‘k panjali ko‘rpachada mushukcha">
+<defs>
+<linearGradient id="kittyFur" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffaf2"/><stop offset=".58" stop-color="#cdd3dc"/><stop offset="1" stop-color="#8495ab"/></linearGradient>
+<linearGradient id="kittyBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4bbcf3"/><stop offset="1" stop-color="#16467d"/></linearGradient>
+<linearGradient id="kittyCushion" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2678b2"/><stop offset="1" stop-color="#0b2949"/></linearGradient>
+</defs>
+<ellipse cx="50" cy="85" rx="35" ry="7" fill="#020712" opacity=".55"/>
+<path d="M15 70Q10 61 19 51L23 38Q15 25 28 18L41 29Q51 25 60 30L75 19 77 42Q87 52 81 66L72 77 25 78Z" fill="url(#kittyFur)" stroke="#e6f1ff" stroke-width="1.4"/>
+<path d="M25 34 29 23 39 32M64 32 73 23 73 38" fill="#a6b4c8" stroke="#e9f4ff" stroke-width="1"/>
+<path d="M30 37l6 9-6 8m32-17-6 9 6 8" fill="none" stroke="#8292aa" stroke-width="3" stroke-linecap="round"/>
+<path d="M27 42Q39 31 49 39Q61 30 70 43L69 57Q60 68 49 65Q35 67 28 56Z" fill="#fbf7f0"/>
+<path d="M35 48q4 4 8 0M53 48q4 4 8 0" fill="none" stroke="#5d6d83" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M46 53l3 3 3-3Z" fill="#d9879e"/>
+<path d="M49 56q-5 5-10 1m11-1q5 5 10 1" fill="none" stroke="#7a8797" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M21 63Q25 56 36 59L64 62Q80 64 83 76Q72 88 47 86Q22 85 17 76Z" fill="url(#kittyCushion)" stroke="#56bff5" stroke-width="1.3"/>
+<path d="M21 65Q35 58 48 67T77 68L83 77Q71 86 48 84Q23 84 17 76Z" fill="url(#kittyBlue)" stroke="#8bdcff" stroke-width="1"/>
+<path d="M25 70q11 6 20 0t20 0 11 0" fill="none" stroke="#91dfff" stroke-width="1.2" opacity=".8"/>
+<g fill="#d8f4ff">
+<g transform="translate(34 75)"><circle r="2.2"/><circle cx="-3" cy="-3" r="1.3"/><circle cx="0" cy="-4" r="1.3"/><circle cx="3" cy="-3" r="1.3"/><circle cx="-3" cy="1" r="1.3"/><circle cx="3" cy="1" r="1.3"/></g>
+<g transform="translate(64 77)"><circle r="2.2"/><circle cx="-3" cy="-3" r="1.3"/><circle cy="-4" r="1.3"/><circle cx="3" cy="-3" r="1.3"/><circle cx="-3" cy="1" r="1.3"/><circle cx="3" cy="1" r="1.3"/></g>
+</g>
+<g fill="#ffd078" font-family="Arial,sans-serif" font-weight="700"><text x="70" y="20" font-size="11">Z</text><text x="79" y="12" font-size="8">z</text></g>
+</svg>
 <span class="arrow">↗</span>
 </div></a></div></div></section>
 </main>
