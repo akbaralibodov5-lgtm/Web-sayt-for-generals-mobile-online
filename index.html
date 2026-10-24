@@ -496,14 +496,14 @@ function applyRemainingTranslations(t,code){
  const set=(s,v)=>{const e=document.querySelector(s);if(e&&v!==undefined)e.innerHTML=v};
  const all=(s,vals)=>document.querySelectorAll(s).forEach((e,i)=>{if(vals[i]!==undefined)e.innerHTML=vals[i]});
  const dict={
- ru:{heroTitle:'ГЕНЕРАЛЫ<br><span>НА ПОЛЕ БОЯ</span><br><em>НА МОБИЛЬНОМ.</em>',featureLabels:['01 / ПРОЕКТ','02 / ОБНОВЛЕНИЯ','03 / СООБЩЕСТВО'],downloadButton:'Открыть канал ↗',communityButton:'Открыть Telegram ↗',footerText:'Создано для сообщества Generals Mobile Online.',menu:'Открыть'},
- uz:{heroTitle:'GENERALLAR<br><span>JANG MAYDONI</span><br><em>MOBILDA.</em>',featureLabels:['01 / LOYIHA','02 / YANGILIKLAR','03 / HAMJAMIYAT'],downloadButton:'Kanalni ochish ↗',communityButton:'Telegramni ochish ↗',footerText:'Generals Mobile Online hamjamiyati uchun yaratilgan.',menu:'Ochish'},
- en:{heroTitle:'GENERALS<br><span>THE BATTLEFIELD</span><br><em>GOES MOBILE.</em>',featureLabels:['01 / PROJECT','02 / UPDATES','03 / COMMUNITY'],downloadButton:'Open channel ↗',communityButton:'Open Telegram ↗',footerText:'Made for the Generals Mobile Online community.',menu:'Explore'}
+ ru:{heroTitle:'ГЕНЕРАЛЫ<br><span>НА ПОЛЕ БОЯ</span><br><em>НА МОБИЛЬНОМ.</em>',featureLabels:['01 / ПРОЕКТ','02 / ОБНОВЛЕНИЯ','03 / СООБЩЕСТВО'],downloadButton:'Скачать',communityButton:'Открыть Telegram ↗',footerText:'Создано для сообщества Generals Mobile Online.',menu:'Открыть'},
+ uz:{heroTitle:'GENERALLAR<br><span>JANG MAYDONI</span><br><em>MOBILDA.</em>',featureLabels:['01 / LOYIHA','02 / YANGILIKLAR','03 / HAMJAMIYAT'],downloadButton:'Yuklab olish',communityButton:'Telegramni ochish ↗',footerText:'Generals Mobile Online hamjamiyati uchun yaratilgan.',menu:'Ochish'},
+ en:{heroTitle:'GENERALS<br><span>THE BATTLEFIELD</span><br><em>GOES MOBILE.</em>',featureLabels:['01 / PROJECT','02 / UPDATES','03 / COMMUNITY'],downloadButton:'Download',communityButton:'Open Telegram ↗',footerText:'Made for the Generals Mobile Online community.',menu:'Explore'}
  }[code]||{};
  set('.hero-content h1',dict.heroTitle);
  all('.arsenal-section .feature .feature-top span',dict.featureLabels);
  all('#features .feature .feature-top span',dict.featureLabels);
- const buttons=[...document.querySelectorAll('#download a.btn, #download .btn')];if(buttons[0]&&dict.downloadButton)buttons[0].innerHTML=dict.downloadButton;
+ const downloadLabel=document.querySelector('#download .download-apk strong');if(downloadLabel&&dict.downloadButton)downloadLabel.textContent=dict.downloadButton;
  const communityLinks=document.querySelectorAll('#community a.btn');communityLinks.forEach(a=>{if(dict.communityButton)a.innerHTML=dict.communityButton});
  const footerNote=document.querySelector('.footer-bottom p');if(footerNote&&dict.footerText)footerNote.textContent=dict.footerText;
  const mobile=document.querySelector('#menuToggle');if(mobile)mobile.setAttribute('aria-label',dict.menu||'Menu');
