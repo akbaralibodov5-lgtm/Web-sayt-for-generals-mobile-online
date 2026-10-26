@@ -401,6 +401,23 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 .community-cat{position:relative;overflow:hidden;display:grid;place-items:center}
 .community-cat .cat-picture{display:block;width:100%;height:100%;object-fit:contain;border-radius:7px;padding:2px;filter:drop-shadow(0 3px 7px #0006)}
 .community-cat .arrow{z-index:2;position:absolute;right:7px;bottom:7px;color:#ffcf76;text-shadow:0 1px 5px #06111d}
+
+/* Cinematic scroll experience: luminous stars, depth and reversible reveals */
+:root{--scroll-depth:0px;--scroll-glow:0}
+body:after{content:"";position:fixed;inset:-8% 0;z-index:-1;pointer-events:none;opacity:.34;background-image:radial-gradient(circle at 12% 18%,#c6efff 0 1px,transparent 2px),radial-gradient(circle at 82% 23%,#5fd4ff 0 1.5px,transparent 3px),radial-gradient(circle at 67% 71%,#fff 0 1px,transparent 2.5px),radial-gradient(circle at 27% 83%,#78caff 0 1px,transparent 2px),radial-gradient(circle at 91% 56%,#c5aaff 0 1px,transparent 2px),radial-gradient(circle at 45% 43%,#e7f9ff 0 1px,transparent 2px);background-size:330px 370px,470px 490px,390px 430px,520px 510px,430px 390px,570px 450px;transform:translate3d(0,calc(var(--scroll-depth)*-.12),0);will-change:transform}
+.hero:before{background-position:center,center,center calc(50% + var(--scroll-depth)*.16);transition:opacity .3s}
+.hero-content{transform:translate3d(0,calc(var(--scroll-depth)*-.025),0);will-change:transform}
+.hero-art{transform:translate3d(0,calc(var(--scroll-depth)*.035),0);will-change:transform}
+.reveal{opacity:0;transform:translate3d(0,34px,0) scale(.985);filter:blur(4px);transition:opacity .75s ease,transform .8s cubic-bezier(.2,.75,.2,1),filter .75s ease}
+.reveal.visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+.feature.reveal:not(.visible),.community-card.reveal:not(.visible),.download-panel.reveal:not(.visible){transform:translate3d(0,28px,0) scale(.98)}
+.feature,.community-card,.showcase-visual,.model-frame{transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .45s}
+.feature:hover,.community-card:hover{box-shadow:0 18px 55px #0005,0 0 28px #39baff10}
+.model-frame{box-shadow:0 24px 65px #0009,0 0 35px #168bd51c,inset 0 0 35px #2baaff08}
+.model-frame:hover{border-color:#58c8ff99;box-shadow:0 26px 70px #000a,0 0 42px #168bd533}
+section{scroll-margin-top:84px}
+@media(max-width:700px){body:after{opacity:.22;background-size:280px 330px,350px 400px,300px 350px,410px 430px,330px 320px,420px 390px}.hero-content,.hero-art{transform:none}}
+@media(prefers-reduced-motion:reduce){body:after,.hero-content,.hero-art{transform:none!important}.reveal{opacity:1;filter:none;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -482,11 +499,11 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 <footer><div class="wrap footer-row"><a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2 28 8v13l-12 9L4 21V8L16 2Z" stroke="#8fe4ff" stroke-width="1.5"/><path d="m9 10 4 12 3-7 3 7 4-12" stroke="#e9f8ff" stroke-width="2.2" stroke-linecap="round"/></svg></span><span>WARU EDITION<small>GENERALS MOBILE ONLINE</small></span></a><div class="footer-copy">© <span id="year"></span> WARU EDITION. Mustaqil fan-loyiha sahifasi.<br>Generals nomi va tegishli savdo belgilarining huquqlari ularning egalariga tegishli.</div><div class="footer-links"><a href="#features">Imkoniyatlar</a><a href="#download">Havolalar</a><a href="#community">Aloqa</a></div></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-const menuToggle=document.getElementById('menuToggle');const navlinks=document.getElementById('navlinks');menuToggle.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰'});navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰'}));document.getElementById('year').textContent=new Date().getFullYear();const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'',a.getAttribute('href'))}}));
+const menuToggle=document.getElementById('menuToggle');const navlinks=document.getElementById('navlinks');menuToggle.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰'});navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰'}));document.getElementById('year').textContent=new Date().getFullYear();const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.classList.toggle('visible',entry.isIntersecting)}),{threshold:.12,rootMargin:'0px 0px -4% 0px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'',a.getAttribute('href'))}}));
 
 // Reading progress indicator — lightweight and mobile-friendly.
 const readingProgress=document.getElementById('readingProgress');
-const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};window.addEventListener('scroll',updateReadingProgress,{passive:true});updateReadingProgress();
+const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};const updateScrollDepth=()=>document.documentElement.style.setProperty('--scroll-depth',window.scrollY+'px');window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('scroll',updateScrollDepth,{passive:true});updateReadingProgress();updateScrollDepth();
 
 /* Language switcher: Uzbek, Russian and English */
 const languageSelect=document.getElementById('languageSelect');
