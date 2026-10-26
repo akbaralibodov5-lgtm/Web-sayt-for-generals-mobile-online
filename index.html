@@ -537,17 +537,17 @@ body.touch-pulse .touch-ripple{animation:fingerRipple .65s ease-out}
 <script>
 // Lightweight touch glow: update once per frame to avoid scroll jank.
 const touchRoot=document.documentElement;let touchPulseTimer,touchFrame=0,pendingTouch=null,hideAuraTimer;
-function moveTouchAura(x,y,pulse){touchRoot.style.setProperty('--finger-x',x+'px');touchRoot.style.setProperty('--finger-y',y+'px');document.body.classList.add('touch-active');clearTimeout(hideAuraTimer);if(pulse){document.body.classList.remove('touch-pulse');document.body.classList.add('touch-pulse');clearTimeout(touchPulseTimer);touchPulseTimer=setTimeout(()=>document.body.classList.remove('touch-pulse'),520)}}
+function moveTouchAura(x,y,pulse){touchRoot.style.setProperty('--finger-x',x+'px');touchRoot.style.setProperty('--finger-y',y+'px');if(pulse){document.body.classList.add('touch-active');document.body.classList.remove('touch-pulse');void document.body.offsetWidth;document.body.classList.add('touch-pulse');clearTimeout(touchPulseTimer);clearTimeout(hideAuraTimer);touchPulseTimer=setTimeout(()=>document.body.classList.remove('touch-pulse'),520);hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),560)}}
 function queueTouchAura(x,y){pendingTouch=[x,y];if(touchFrame)return;touchFrame=requestAnimationFrame(()=>{touchFrame=0;if(pendingTouch)moveTouchAura(pendingTouch[0],pendingTouch[1],false)})}
 if(window.PointerEvent){
  window.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')moveTouchAura(e.clientX,e.clientY,true)},{passive:true});
- window.addEventListener('pointermove',e=>{if(e.pointerType==='touch')queueTouchAura(e.clientX,e.clientY)},{passive:true});
- window.addEventListener('pointerup',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),650)},{passive:true});
+ // Deliberately ignore touchmove/pointermove: effects appear only on a tap.
+ window.addEventListener('pointerup',()=>{}, {passive:true});
  window.addEventListener('pointercancel',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),250)},{passive:true});
 }else{
  window.addEventListener('touchstart',e=>{if(e.touches&&e.touches[0])moveTouchAura(e.touches[0].clientX,e.touches[0].clientY,true)},{passive:true});
- window.addEventListener('touchmove',e=>{if(e.touches&&e.touches[0])queueTouchAura(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
- window.addEventListener('touchend',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),650)},{passive:true});
+ // Deliberately ignore touchmove: effects appear only on a tap.
+ window.addEventListener('touchend',()=>{}, {passive:true});
 }
 // Load the heavy interactive 3D scenes only when the visitor asks for them.
 document.querySelectorAll('.model-frame iframe[data-src]').forEach(frame=>{
