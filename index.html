@@ -558,7 +558,21 @@ function applyLanguage(code){
  set('#about .showcase-copy .eyebrow',t.aboutEyebrow);set('#about .showcase-copy h2',t.aboutTitle);set('#about .showcase-copy > p',t.aboutCopy);document.querySelectorAll('#about .check').forEach((el,i)=>{const item=t.checks[i];if(!item)return;const text=el.querySelector('span:not(.checkmark)');if(text)text.innerHTML='<b>'+item[0]+'</b><br>'+item[1]});
  set('#download .eyebrow',t.downloadEyebrow);set('#download .section-head h2',t.downloadTitle);set('#download .section-head p',t.downloadCopy);set('#download .version',t.downloadLabel);set('#download h3',t.downloadTitle2);set('#download .download-panel p',t.downloadText);
  set('#community .eyebrow',t.communityEyebrow);set('#community .section-head h2',t.communityTitle);set('#community .section-head p',t.communityCopy);setAll('.community-card h3',t.communityCards.map(x=>x[0]));setAll('.community-card p',t.communityCards.map(x=>x[1]));
- setAll('.footer-links a',t.footer);try{localStorage.setItem('waru-language',code)}catch(e){}
+ setAll('.footer-links a',t.footer);
+ // Translate all remaining interface labels and accessibility text as well.
+ const brand=document.querySelector('header .brand');if(brand)brand.setAttribute('aria-label',t.brandLabel);
+ if(languageSelect)languageSelect.setAttribute('aria-label',t.languageLabel);
+ const palette=document.getElementById('paletteToggle');if(palette){palette.setAttribute('aria-label',t.paletteLabel);palette.title=t.paletteLabel;}
+ const heroModel=document.querySelector('.hero-model iframe');if(heroModel)heroModel.title=t.modelTitle;
+ const modelTop=document.querySelector('.model-corner-tl');if(modelTop)modelTop.innerHTML=t.modelTop.replace(' / ',' <span> / ')+(t.modelTop.includes('/')?'':'')+'</span>';
+ const modelBottom=document.querySelector('.model-corner-br');if(modelBottom)modelBottom.textContent=t.modelBottom;
+ const modelCaption=document.querySelector('.model-label');if(modelCaption)modelCaption.innerHTML='<strong>'+t.modelCaption.split(' / ')[0]+'</strong> '+t.modelCaption.split(' / ').slice(1).join(' / ');
+ const footerCopy=document.querySelector('.footer-copy');if(footerCopy)footerCopy.innerHTML='© <span id="year">'+new Date().getFullYear()+'</span> WARU EDITION. '+t.copyright+'<br>'+t.trademark;
+ const channel=document.querySelector('.community-card[href="https://t.me/generalsmobile1"]');if(channel)channel.setAttribute('aria-label',t.channelAria);
+ const players=document.querySelector('.community-card[href="https://t.me/generalstelefon"]');if(players)players.setAttribute('aria-label',t.playersAria);
+ const description=document.querySelector('meta[name="description"]');if(description)description.setAttribute('content',t.heroCopy);
+ const menu=document.getElementById('menuToggle');if(menu){menu.setAttribute('aria-label',t.menu);menu.title=t.menu;}
+ try{localStorage.setItem('waru-language',code)}catch(e){}
 }
 const baseApplyLanguage=applyLanguage;applyLanguage=function(code){baseApplyLanguage(code);applyRemainingTranslations(translations[code]||translations.ru,code)};
 languageSelect.addEventListener('change',()=>applyLanguage(languageSelect.value));
