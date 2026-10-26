@@ -362,7 +362,11 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 
 
 /* Interactive Sketchfab Overlord model */
-.hero-art.hero-model{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:18px;min-height:0;width:100%;max-width:600px;margin-inline:auto}
+.hero-art.hero-model{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:18px;min-height:0;width:100%;max-width:1120px;margin-inline:auto}
+.model-card{display:flex;flex-direction:column;gap:12px;min-width:0}
+.model-card .model-frame{width:100%}
+.model-card .model-label{align-self:flex-start}
+@media(max-width:700px){.hero-art.hero-model{grid-template-columns:minmax(0,1fr);max-width:600px}.model-card{width:100%}}
 .model-frame{position:relative;width:100%;aspect-ratio:4/3;min-height:260px;overflow:hidden;border:1px solid #28516b;border-radius:16px;background:radial-gradient(ellipse at 50% 45%,#132b3b 0%,#070b12 72%);box-shadow:0 24px 65px #0009,0 0 35px #168bd51c}
 .model-frame iframe{display:block;position:absolute;inset:0;width:100%;height:100%;border:0}
 .model-corner{position:absolute;z-index:2;pointer-events:none;padding:9px 11px;background:#07111bd9;color:#b8e7ff;font:700 9px/1.4 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase}
@@ -410,13 +414,23 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
 <div class="hero-content"><div class="eyebrow">Strategiya yangi darajada</div><h1>JANG<br><span>MAYDONI</span><em>MOBILDA.</em></h1><p class="hero-copy">Sevimli real-time strategiya olamiga mobil qurilmangizdan qayting. Waru Edition — Generals ruhidagi janglar, qulay boshqaruv va o‘yinchilar hamjamiyati uchun yaratilgan loyiha.</p><div class="hero-buttons"><a class="btn btn-primary" href="#arsenal">↓ &nbsp; Jang maydonini ko‘rish</a><a class="btn btn-ghost" href="#about">Loyiha haqida <span>↗</span></a></div><div class="microstats"><div class="microstat"><strong>RTS</strong><span>Real-time strategiya</span></div><div class="microstat"><strong>MOBILE</strong><span>Mobil tajriba</span></div><div class="microstat"><strong>WARU</strong><span>Community edition</span></div></div></div>
-<div class="hero-art hero-model" aria-label="Overlord 3D model from Command & Conquer Generals Zero Hour">
+<div class="hero-art hero-model" aria-label="Interactive 3D models: Overlord and Plasmatic Cube">
+<div class="model-card">
 <div class="model-frame">
-<iframe title="Overlord — Command & Conquer Generals Zero Hour 3D model" src="https://sketchfab.com/models/941732e50068479db26bf8101376d502/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0&ui_watermark_link=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+<iframe title="Overlord — Command &amp; Conquer Generals Zero Hour 3D model" src="https://sketchfab.com/models/941732e50068479db26bf8101376d502/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
 <div class="model-corner model-corner-tl">WARU EDITION <span> / 3D INTEL</span></div>
 <div class="model-corner model-corner-br">OVERLORD // ROTATABLE MODEL</div>
 </div>
 <div class="art-label model-label"><strong>OVERLORD</strong> COMMAND &amp; CONQUER: ZERO HOUR</div>
+</div>
+<div class="model-card">
+<div class="model-frame">
+<iframe title="Plasmatic Cube — interactive 3D model" src="https://sketchfab.com/models/15dbd880d3aa4c938fe4ca5d114054a3/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+<div class="model-corner model-corner-tl">WARU EDITION <span> / ENERGY CORE</span></div>
+<div class="model-corner model-corner-br">PLASMATIC CUBE // ROTATABLE MODEL</div>
+</div>
+<div class="art-label model-label"><strong>PLASMATIC CUBE</strong> INTERACTIVE 3D MODEL</div>
+</div>
 </div></div>
 </div><div class="scroll-note">Pastga aylantiring</div></section>
 <div class="ticker"><div class="wrap ticker-inner"><div class="status"><span class="dot"></span> WARU EDITION • LOYIHA SAHIFASI</div><div class="ticker-note">Generals ruhi. Mobil platforma. <b>Bir strategiya hamjamiyati.</b></div></div></div>
