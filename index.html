@@ -421,14 +421,38 @@ section{scroll-margin-top:84px}
 
 /* Finger-following luminous interaction for touch screens */
 :root{--finger-x:50vw;--finger-y:45vh}
-.touch-aura{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;background:radial-gradient(circle 155px at var(--finger-x) var(--finger-y),rgba(48,174,255,.22),rgba(48,174,255,.08) 38%,transparent 74%);mix-blend-mode:screen;transition:opacity .25s ease}
+.touch-aura{position:fixed;inset:auto;left:var(--finger-x);top:var(--finger-y);width:300px;height:300px;z-index:90;pointer-events:none;opacity:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(48,174,255,.2),rgba(48,174,255,.07) 38%,transparent 72%);mix-blend-mode:normal;will-change:transform;transition:opacity .2s ease}
 body.touch-active .touch-aura{opacity:1}
-body.touch-pulse .touch-aura{background:radial-gradient(circle 220px at var(--finger-x) var(--finger-y),rgba(104,218,255,.3),rgba(39,151,255,.1) 42%,transparent 74%)}
+body.touch-pulse .touch-aura{background:radial-gradient(circle,rgba(104,218,255,.25),rgba(39,151,255,.08) 42%,transparent 72%)}
 .touch-ripple{position:fixed;z-index:91;pointer-events:none;width:18px;height:18px;border:1px solid #a8eaff;border-radius:50%;left:var(--finger-x);top:var(--finger-y);transform:translate(-50%,-50%) scale(.2);opacity:0;box-shadow:0 0 18px #48c8ff, inset 0 0 10px #48c8ff55}
 body.touch-pulse .touch-ripple{animation:fingerRipple .65s ease-out}
 @keyframes fingerRipple{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(7)}}
 @media(hover:none){.btn:active,.community-card:active,.feature:active{transform:scale(.985);filter:brightness(1.12)}}
 @media(prefers-reduced-motion:reduce){.touch-aura,.touch-ripple{display:none!important}}
+
+/* PERFORMANCE PATCH: keep effects compositor-friendly and defer GPU-heavy 3D embeds. */
+.model-frame{contain:layout paint;isolation:isolate}
+.model-frame iframe{z-index:1}
+.model-load-btn{position:absolute;z-index:3;inset:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:0;color:#dff6ff;cursor:pointer;background:radial-gradient(ellipse at center,#12344a 0%,#08131f 55%,#05080d 100%);text-align:center}
+.model-load-btn:before,.model-load-btn:after{content:"";position:absolute;inset:16px;border:1px solid #57c9ff22;pointer-events:none}
+.model-load-btn:after{inset:25px;border-color:#ff765322}
+.model-play{display:grid;place-items:center;width:54px;height:54px;padding-left:4px;border:1px solid #72d9ff;border-radius:50%;background:#12354b;box-shadow:0 0 28px #31b9ff3d;color:#a8eaff;font-size:17px;transition:transform .2s,background .2s}
+.model-load-btn strong{font:800 12px/1.2 Inter,system-ui,sans-serif;letter-spacing:.18em}
+.model-load-btn small{font-size:10px;color:#91aebe}
+.model-load-btn:active .model-play{transform:scale(.92);background:#1a5573}
+.touch-aura,.touch-ripple{contain:strict}
+@media(max-width:700px){
+ body:after{background-size:54px 54px;opacity:.12}
+ header{backdrop-filter:none;-webkit-backdrop-filter:none}
+ .feature,.community-card,.model-frame,.showcase-visual{box-shadow:0 10px 28px #0005}
+ .feature:hover,.community-card:hover,.model-frame:hover{transform:none}
+ .radar,.radar-sweep,.vehicle,.dot{animation:none!important}
+ .hero:before{background-image:linear-gradient(90deg,#05080df2,#05080d9c),linear-gradient(0deg,#05080d,transparent),url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=65')}
+ .touch-aura{width:230px;height:230px}
+ .reveal{transition:opacity .35s ease,transform .35s ease}
+}
+@media(prefers-reduced-motion:reduce){.touch-aura,.touch-ripple{display:block!important}.touch-aura{transition:none}.touch-ripple{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -446,7 +470,7 @@ body.touch-pulse .touch-ripple{animation:fingerRipple .65s ease-out}
 <div class="hero-art hero-model" aria-label="Interactive 3D models: Overlord and Holographic Earth">
 <div class="model-card">
 <div class="model-frame">
-<iframe title="Overlord — Command &amp; Conquer Generals Zero Hour 3D model" src="https://sketchfab.com/models/941732e50068479db26bf8101376d502/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+<iframe title="Overlord — Command &amp; Conquer Generals Zero Hour 3D model" data-src="https://sketchfab.com/models/941732e50068479db26bf8101376d502/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" src="about:blank" style="display:none" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe><button class="model-load-btn" type="button" aria-label="Load interactive 3D model"><span class="model-play">▶</span><strong>LOAD 3D MODEL</strong><small>Tap to start interactive view</small></button>
 <div class="model-corner model-corner-tl">WARU EDITION <span> / 3D INTEL</span></div>
 <div class="model-corner model-corner-br">OVERLORD // ROTATABLE MODEL</div>
 </div>
@@ -454,7 +478,7 @@ body.touch-pulse .touch-ripple{animation:fingerRipple .65s ease-out}
 </div>
 <div class="model-card">
 <div class="model-frame">
-<iframe title="Holographic Earth — sci-fi grid globe 3D model" src="https://sketchfab.com/models/ee230545521b496fa205318dfbd748fa/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+<iframe title="Holographic Earth — sci-fi grid globe 3D model" data-src="https://sketchfab.com/models/ee230545521b496fa205318dfbd748fa/embed?autostart=1&amp;ui_theme=dark&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0" src="about:blank" style="display:none" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe><button class="model-load-btn" type="button" aria-label="Load interactive 3D model"><span class="model-play">▶</span><strong>LOAD 3D MODEL</strong><small>Tap to start interactive view</small></button>
 <div class="model-corner model-corner-tl">WARU EDITION <span> / HOLOGRAPHIC INTEL</span></div>
 <div class="model-corner model-corner-br">HOLOGRAPHIC EARTH // ROTATABLE MODEL</div>
 </div>
@@ -511,15 +535,29 @@ body.touch-pulse .touch-ripple{animation:fingerRipple .65s ease-out}
 <footer><div class="wrap footer-row"><a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2 28 8v13l-12 9L4 21V8L16 2Z" stroke="#8fe4ff" stroke-width="1.5"/><path d="m9 10 4 12 3-7 3 7 4-12" stroke="#e9f8ff" stroke-width="2.2" stroke-linecap="round"/></svg></span><span>WARU EDITION<small>GENERALS MOBILE ONLINE</small></span></a><div class="footer-copy">© <span id="year"></span> WARU EDITION. Mustaqil fan-loyiha sahifasi.<br>Generals nomi va tegishli savdo belgilarining huquqlari ularning egalariga tegishli.</div><div class="footer-links"><a href="#features">Imkoniyatlar</a><a href="#download">Havolalar</a><a href="#community">Aloqa</a></div></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-// Touch-reactive glow follows the user's finger and ripples on tap.
-const touchRoot=document.documentElement;let touchPulseTimer;
-function moveTouchAura(x,y,pulse){touchRoot.style.setProperty('--finger-x',x+'px');touchRoot.style.setProperty('--finger-y',y+'px');document.body.classList.add('touch-active');if(pulse){document.body.classList.remove('touch-pulse');void document.body.offsetWidth;document.body.classList.add('touch-pulse');clearTimeout(touchPulseTimer);touchPulseTimer=setTimeout(()=>document.body.classList.remove('touch-pulse'),700)}}
-window.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')moveTouchAura(e.clientX,e.clientY,true)},{passive:true});
-window.addEventListener('pointermove',e=>{if(e.pointerType==='touch')moveTouchAura(e.clientX,e.clientY,false)},{passive:true});
-window.addEventListener('pointerup',()=>{setTimeout(()=>document.body.classList.remove('touch-active'),900)},{passive:true});
-window.addEventListener('touchstart',e=>{if(e.touches&&e.touches[0])moveTouchAura(e.touches[0].clientX,e.touches[0].clientY,true)},{passive:true});
-window.addEventListener('touchmove',e=>{if(e.touches&&e.touches[0])moveTouchAura(e.touches[0].clientX,e.touches[0].clientY,false)},{passive:true});
-window.addEventListener('touchend',()=>{setTimeout(()=>document.body.classList.remove('touch-active'),900)},{passive:true});
+// Lightweight touch glow: update once per frame to avoid scroll jank.
+const touchRoot=document.documentElement;let touchPulseTimer,touchFrame=0,pendingTouch=null,hideAuraTimer;
+function moveTouchAura(x,y,pulse){touchRoot.style.setProperty('--finger-x',x+'px');touchRoot.style.setProperty('--finger-y',y+'px');document.body.classList.add('touch-active');clearTimeout(hideAuraTimer);if(pulse){document.body.classList.remove('touch-pulse');document.body.classList.add('touch-pulse');clearTimeout(touchPulseTimer);touchPulseTimer=setTimeout(()=>document.body.classList.remove('touch-pulse'),520)}}
+function queueTouchAura(x,y){pendingTouch=[x,y];if(touchFrame)return;touchFrame=requestAnimationFrame(()=>{touchFrame=0;if(pendingTouch)moveTouchAura(pendingTouch[0],pendingTouch[1],false)})}
+if(window.PointerEvent){
+ window.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')moveTouchAura(e.clientX,e.clientY,true)},{passive:true});
+ window.addEventListener('pointermove',e=>{if(e.pointerType==='touch')queueTouchAura(e.clientX,e.clientY)},{passive:true});
+ window.addEventListener('pointerup',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),650)},{passive:true});
+ window.addEventListener('pointercancel',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),250)},{passive:true});
+}else{
+ window.addEventListener('touchstart',e=>{if(e.touches&&e.touches[0])moveTouchAura(e.touches[0].clientX,e.touches[0].clientY,true)},{passive:true});
+ window.addEventListener('touchmove',e=>{if(e.touches&&e.touches[0])queueTouchAura(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+ window.addEventListener('touchend',()=>{hideAuraTimer=setTimeout(()=>document.body.classList.remove('touch-active'),650)},{passive:true});
+}
+// Load the heavy interactive 3D scenes only when the visitor asks for them.
+document.querySelectorAll('.model-frame iframe[data-src]').forEach(frame=>{
+ const button=frame.parentElement.querySelector('.model-load-btn');
+ if(!button)return;
+ button.addEventListener('click',()=>{
+  if(frame.dataset.loaded==='1')return;
+  frame.src=frame.dataset.src;frame.dataset.loaded='1';frame.style.display='block';button.remove();
+ },{once:true});
+});
 const menuToggle=document.getElementById('menuToggle');const navlinks=document.getElementById('navlinks');menuToggle.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰'});navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰'}));document.getElementById('year').textContent=new Date().getFullYear();const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.classList.toggle('visible',entry.isIntersecting)}),{threshold:.12,rootMargin:'0px 0px -4% 0px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'',a.getAttribute('href'))}}));
 
 // Reading progress indicator — lightweight and mobile-friendly.
