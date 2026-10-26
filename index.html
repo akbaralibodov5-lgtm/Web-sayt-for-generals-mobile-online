@@ -404,10 +404,10 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(
 
 /* Cinematic scroll experience: luminous stars, depth and reversible reveals */
 :root{--scroll-depth:0px;--scroll-glow:0}
-body:after{content:"";position:fixed;inset:-8% 0;z-index:-1;pointer-events:none;opacity:.34;background-image:radial-gradient(circle at 12% 18%,#c6efff 0 1px,transparent 2px),radial-gradient(circle at 82% 23%,#5fd4ff 0 1.5px,transparent 3px),radial-gradient(circle at 67% 71%,#fff 0 1px,transparent 2.5px),radial-gradient(circle at 27% 83%,#78caff 0 1px,transparent 2px),radial-gradient(circle at 91% 56%,#c5aaff 0 1px,transparent 2px),radial-gradient(circle at 45% 43%,#e7f9ff 0 1px,transparent 2px);background-size:330px 370px,470px 490px,390px 430px,520px 510px,430px 390px,570px 450px;transform:translate3d(0,calc(var(--scroll-depth)*-.12),0);will-change:transform}
-.hero:before{background-position:center,center,center calc(50% + var(--scroll-depth)*.16);transition:opacity .3s}
-.hero-content{transform:translate3d(0,calc(var(--scroll-depth)*-.025),0);will-change:transform}
-.hero-art{transform:translate3d(0,calc(var(--scroll-depth)*.035),0);will-change:transform}
+body:after{content:"";position:fixed;inset:-8% 0;z-index:-1;pointer-events:none;opacity:.34;background-image:radial-gradient(circle at 12% 18%,#c6efff 0 1px,transparent 2px),radial-gradient(circle at 82% 23%,#5fd4ff 0 1.5px,transparent 3px),radial-gradient(circle at 67% 71%,#fff 0 1px,transparent 2.5px),radial-gradient(circle at 27% 83%,#78caff 0 1px,transparent 2px),radial-gradient(circle at 91% 56%,#c5aaff 0 1px,transparent 2px),radial-gradient(circle at 45% 43%,#e7f9ff 0 1px,transparent 2px);background-size:330px 370px,470px 490px,390px 430px,520px 510px,430px 390px,570px 450px;transform:translate3d(0,var(--scroll-shift,0px),0);will-change:transform}
+.hero:before{background-position:center,center,center calc(50% + var(--hero-shift,0px));transition:opacity .3s}
+.hero-content{transform:translate3d(0,var(--content-shift,0px),0);will-change:transform}
+.hero-art{transform:translate3d(0,var(--art-shift,0px),0);will-change:transform}
 .reveal{opacity:0;transform:translate3d(0,34px,0) scale(.985);filter:blur(4px);transition:opacity .75s ease,transform .8s cubic-bezier(.2,.75,.2,1),filter .75s ease}
 .reveal.visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
 .feature.reveal:not(.visible),.community-card.reveal:not(.visible),.download-panel.reveal:not(.visible){transform:translate3d(0,28px,0) scale(.98)}
@@ -503,7 +503,7 @@ const menuToggle=document.getElementById('menuToggle');const navlinks=document.g
 
 // Reading progress indicator — lightweight and mobile-friendly.
 const readingProgress=document.getElementById('readingProgress');
-const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};const updateScrollDepth=()=>document.documentElement.style.setProperty('--scroll-depth',window.scrollY+'px');window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('scroll',updateScrollDepth,{passive:true});updateReadingProgress();updateScrollDepth();
+const updateReadingProgress=()=>{if(!readingProgress)return;const max=document.documentElement.scrollHeight-window.innerHeight;readingProgress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};let scrollTicking=false;const updateScrollDepth=()=>{const y=window.scrollY||0;const root=document.documentElement;root.style.setProperty('--scroll-shift',(-y*.12)+'px');root.style.setProperty('--hero-shift',(y*.16)+'px');root.style.setProperty('--content-shift',(-y*.025)+'px');root.style.setProperty('--art-shift',(y*.035)+'px');scrollTicking=false};const onScrollDepth=()=>{if(!scrollTicking){scrollTicking=true;requestAnimationFrame(updateScrollDepth)}};window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('scroll',onScrollDepth,{passive:true});updateReadingProgress();updateScrollDepth();
 
 /* Language switcher: Uzbek, Russian and English */
 const languageSelect=document.getElementById('languageSelect');
