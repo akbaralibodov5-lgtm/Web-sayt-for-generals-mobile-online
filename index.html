@@ -698,6 +698,30 @@ body.touch-active .touch-aura,body.touch-pulse .touch-aura{display:none!importan
  .download-panel{padding:16px}
 }
 
+
+/* ===== FINAL MOBILE BUGFIX: remove oversized orb + prevent clipped headings ===== */
+#download .download-panel:before{display:none!important;content:none!important}
+#download .download-panel:after{display:none!important;content:none!important}
+#download .download-panel{isolation:isolate;overflow:hidden}
+#download .download-panel>*{position:relative;z-index:1}
+#community .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.7fr);gap:24px;align-items:end}
+#community .section-head h2{max-width:100%;font-size:clamp(32px,5.2vw,62px);line-height:1.02;letter-spacing:-.045em;overflow-wrap:normal;word-break:normal}
+#community .section-head h2 span{display:block;white-space:normal}
+#community .section-head p{min-width:0;max-width:100%;margin:0 0 5px;line-height:1.75;overflow-wrap:anywhere}
+#download .section-head h2{font-size:clamp(32px,5.2vw,62px);line-height:1.02}
+@media(max-width:760px){
+ #community .section-head{display:block}
+ #community .section-head h2{font-size:clamp(30px,8.1vw,46px);line-height:1.06;letter-spacing:-.035em;max-width:100%}
+ #community .section-head h2 span{white-space:normal}
+ #community .section-head p{margin-top:20px;font-size:16px;line-height:1.7}
+ #download .section-head h2{font-size:clamp(31px,8.3vw,48px);line-height:1.05}
+ #download .download-panel:before,#download .download-panel:after{display:none!important;content:none!important}
+ #download .download-panel{background:linear-gradient(145deg,#0d2030,#08111d 65%,#10101a)!important}
+}
+@media(max-width:390px){
+ #community .section-head h2{font-size:clamp(28px,7.8vw,34px);letter-spacing:-.025em}
+}
+
 </style>
 </head>
 <body>
