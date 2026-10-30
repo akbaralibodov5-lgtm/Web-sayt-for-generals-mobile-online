@@ -1047,6 +1047,9 @@ applyLanguage=function(code){
  const fact4=document.querySelector('[data-fact="f4p"]');if(fact4)fact4.textContent=lang.f4p;
 };
 
+/* Re-apply selected language after all translation layers are registered */
+applyLanguage(languageSelect.value||'ru');
+
 </script>
 
 
