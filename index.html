@@ -1014,6 +1014,39 @@ en:{eyebrow:'GENERALS ZERO HOUR / ANDROID PORT',title:'ABOUT THE PROJECT<br><spa
 const baseApplyFacts=applyLanguage;
 applyLanguage=function(code){baseApplyFacts(code);const d=factTranslations[code]||factTranslations.uz;document.querySelectorAll('[data-fact]').forEach(e=>{const k=e.getAttribute('data-fact');if(d[k])e.innerHTML=d[k];});};
 
+
+/* Complete language pass: every visible label, metadata and accessibility string */
+const completeLanguageText={
+uz:{pageTitle:'Waru Edition — Generals Zero Hour Android loyihasi',description:'Generals Zero Hour Android porti: o‘yin rejimlari, grafik backendlar, sensorli boshqaruv, online va LAN imkoniyatlari. Waru Edition hamjamiyati.',heroTitle:'GENERALS<br><span>JANG MAYDONI</span><br><em>MOBILDA.</em>',discover:'Ko‘rib chiqish',menu:'Menyuni ochish',palette:'Rang mavzusini almashtirish',model:'Overlord — Generals: Zero Hour 3D modeli',modelTop:'WARU EDITION / 3D MODEL',modelBottom:'OVERLORD / AYLANUVCHI 3D MODEL',caption:'JANG MAYDONI OPERATSIYALARI',footerLinks:['Imkoniyatlar','Yuklab olish','Aloqa'],footer:'Mustaqil muxlislar loyihasi. Generals savdo belgilarining huquqlari egalariga tegishli.',downloadVersion:'Waru Edition · v1.4.5.1',downloadButton:'APK yuklab olish',telegram:'Telegramni ochish ↗',communityAria:'O‘yinchilar hamjamiyati',channelAria:'Telegram kanalini ochish',playersAria:'O‘yinchilar hamjamiyatiga qo‘shilish',cat:'Mushukcha tasviri',f4p:'Tegish, ikki marta tegish, ramka bilan tanlash, ikki barmoqda kamerani siljitish va masshtabni o‘zgartirish.'},
+ru:{pageTitle:'Waru Edition — Generals Zero Hour для Android',description:'Android-порт Generals Zero Hour: игровые режимы, графические backend’ы, сенсорное управление, онлайн-игра и LAN. Сообщество Waru Edition.',heroTitle:'GENERALS<br><span>ПОЛЕ БОЯ</span><br><em>НА ANDROID.</em>',discover:'Обзор проекта',menu:'Открыть меню',palette:'Сменить цветовую тему',model:'Overlord — 3D-модель из Generals: Zero Hour',modelTop:'WARU EDITION / 3D-МОДЕЛЬ',modelBottom:'OVERLORD / ВРАЩАЕМАЯ 3D-МОДЕЛЬ',caption:'БОЕВЫЕ ОПЕРАЦИИ',footerLinks:['Возможности','Скачать','Контакты'],footer:'Независимый фанатский проект. Права на товарные знаки Generals принадлежат их владельцам.',downloadVersion:'Waru Edition · версия 1.4.5.1',downloadButton:'Скачать APK',telegram:'Открыть Telegram ↗',communityAria:'Сообщество игроков',channelAria:'Открыть Telegram-канал',playersAria:'Присоединиться к сообществу игроков',cat:'Изображение котёнка',f4p:'Нажатие, двойное нажатие, выделение рамкой, перемещение камеры и масштабирование двумя пальцами.'},
+en:{pageTitle:'Waru Edition — Generals Zero Hour Android Project',description:'Generals Zero Hour Android port: game modes, rendering backends, native touch controls, online multiplayer and LAN. Waru Edition community.',heroTitle:'GENERALS<br><span>THE BATTLEFIELD</span><br><em>ON ANDROID.</em>',discover:'Explore project',menu:'Open menu',palette:'Change color theme',model:'Overlord — Generals: Zero Hour 3D model',modelTop:'WARU EDITION / 3D MODEL',modelBottom:'OVERLORD / ROTATABLE 3D MODEL',caption:'BATTLEFIELD OPERATIONS',footerLinks:['Features','Download','Contact'],footer:'Independent fan-made project. Generals trademarks belong to their respective owners.',downloadVersion:'Waru Edition · version 1.4.5.1',downloadButton:'Download APK',telegram:'Open Telegram ↗',communityAria:'Player community',channelAria:'Open Telegram channel',playersAria:'Join the player community',cat:'Kitten illustration',f4p:'Tap, double-tap, box selection, two-finger camera movement and pinch zoom.'}
+};
+const previousCompleteApply=applyLanguage;
+applyLanguage=function(code){
+ const lang=completeLanguageText[code]||completeLanguageText.uz;
+ previousCompleteApply(code);
+ document.title=lang.pageTitle;
+ const meta=document.querySelector('meta[name="description"]');if(meta)meta.setAttribute('content',lang.description);
+ const h1=document.querySelector('.hero-content h1');if(h1)h1.innerHTML=lang.heroTitle;
+ const navButton=document.querySelector('.nav-actions > a.btn');if(navButton)navButton.innerHTML=lang.discover+' <span>↗</span>';
+ const palette=document.getElementById('paletteToggle');if(palette){palette.setAttribute('aria-label',lang.palette);palette.title=lang.palette;}
+ const menu=document.getElementById('menuToggle');if(menu){menu.setAttribute('aria-label',lang.menu);menu.title=lang.menu;}
+ const model=document.querySelector('.hero-model');if(model)model.setAttribute('aria-label',lang.model);
+ const frame=document.querySelector('.hero-model iframe');if(frame)frame.title=lang.model;
+ const top=document.querySelector('.model-corner-tl');if(top)top.innerHTML=lang.modelTop.replace(' / ',' <span> / ' )+'</span>';
+ const bottom=document.querySelector('.model-corner-br');if(bottom)bottom.textContent=lang.modelBottom;
+ const caption=document.querySelector('.visual-caption span:first-child');if(caption)caption.innerHTML='<strong>WARU EDITION</strong><br>'+lang.caption;
+ const version=document.querySelector('#download .download-apk small');if(version)version.textContent=lang.downloadVersion;
+ const download=document.querySelector('#download .download-apk strong');if(download)download.textContent=lang.downloadButton;
+ const telegram=document.querySelector('#download .download-actions .btn-ghost');if(telegram)telegram.textContent=lang.telegram;
+ document.querySelectorAll('.footer-links a').forEach((el,i)=>{if(lang.footerLinks[i])el.textContent=lang.footerLinks[i];});
+ const footer=document.querySelector('.footer-copy');if(footer)footer.innerHTML='© <span id="year">'+new Date().getFullYear()+'</span> WARU EDITION. '+lang.footer;
+ const brand=document.querySelector('header .brand');if(brand)brand.setAttribute('aria-label',code==='ru'?'Главная страница Waru Edition':code==='en'?'Waru Edition home page':'Waru Edition bosh sahifasi');
+ const cards=document.querySelectorAll('#community .community-card');if(cards[0])cards[0].setAttribute('aria-label',lang.channelAria);if(cards[1])cards[1].setAttribute('aria-label',lang.playersAria);
+ const cat=document.querySelector('.cat-picture');if(cat)cat.setAttribute('aria-label',lang.cat);
+ const fact4=document.querySelector('[data-fact="f4p"]');if(fact4)fact4.textContent=lang.f4p;
+};
+
 </script>
 
 
